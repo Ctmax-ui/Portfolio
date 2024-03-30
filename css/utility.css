@@ -1,0 +1,75 @@
+.mt-7{
+    margin-top: 7rem;
+}
+.btn-from-down, .btn-from-up, .btn-from-right, .btn-from-left{
+    padding: 15px 40px;
+    position: relative;
+    background: #fff;
+    cursor: pointer;
+    transition: all ease .5s;
+    overflow: hidden;
+    z-index: 2;
+    border-radius: 5px;
+    }
+    .btn-from-right-inside{
+        position: absolute;
+        display: inline-block;
+        width: 200%;
+        height: 250%;
+        border-radius: 0 50% 50% 0;
+        right: 100%;
+        top: 0;
+        transition: all ease .5s;
+        z-index: -1;
+        background-color: #000;
+        color: #000;
+    }
+    .btn-from-right:hover{
+        color: #fff;
+    }
+    .btn-from-right:hover .btn-from-right-inside{
+        right: -60px;
+    }
+
+    .btn-from-left-inside{
+        position: absolute;
+        display: inline-block;
+        width: 200%;
+        height: 250%;
+        border-radius: 50% 0 0 50%;
+        left: 100%;
+        top: 0;
+        transition: all ease .8s;
+        z-index: -1;
+        background-color: #000;
+    }
+    .btn-from-left:hover{
+        color: #fff;
+    }
+    .btn-from-left:hover .btn-from-left-inside{
+        left: -100%;
+    }
+
+
+    .circle {
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        z-index: 99999999999;
+        position: fixed;
+        pointer-events: none;
+        transition: transform 0.3s ease;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+    
