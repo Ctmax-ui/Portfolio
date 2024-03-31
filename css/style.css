@@ -108,19 +108,52 @@ body.bg-dark .hero-section p{
 
 }
 
+/* skills section start */
+.skills-section{
+    margin-top: 130px;
+}
+
+.skills-row .col-1{
+    text-align: center;
+    padding: .5rem;
+}
+.skills-row .col-1 p{
+    font-weight: 600;
+
+}
+
+
+
+
+
+
+
+
+/* skills section end */
+
+
 /* project banner start */
 .project-banner{
     margin-top: 9rem;
     /* height: 600px; */
     
 }
+body.bg-dark .project-title a,body.bg-dark .project-title h2{
+    color: #fff !important;
+
+}
 
 .project-sec-row .col-4{
-    border: 1px solid #aaaaaa;
+    border: 1px solid #00000047;
     padding: 0;
     width: 32%;
     padding: 10px;
     border-radius: 7px;
+    background: #fff;
+}
+body.bg-dark .project-sec-row .col-4{
+    border: 1px solid #000000;
+    /* background: #000000; */
 }
 
 .project-sec-row .col-4 p{ 
@@ -128,6 +161,13 @@ body.bg-dark .hero-section p{
  font-size: 15px;
 }
 
+body.bg-dark .project-sec-row .col-4 p{
+    color: #f6f6f6;
+}
+
+.project-btn-group{
+    z-index: 1000;
+}
 .project-btn-group a{
     padding: 8px 15px ;
     border: 1px solid #525252;
@@ -135,5 +175,58 @@ body.bg-dark .hero-section p{
     border-radius: 7px;
     cursor: none;
 }
+
+body.bg-dark .btn-from-right{
+    background: #000000;
+    color: #fff;
+    border-color: #fff;
+}
+body.bg-dark .btn-from-right:hover{
+    color: #000000;
+    background: #fff;
+}
+body.bg-dark .btn-from-right-inside{
+    background: #fff;
+}
+
+body.bg-dark .btn-from-left{
+    background: #000000;
+    color: #fff;
+    border-color: #fff;
+}
+body.bg-dark .btn-from-left:hover{
+    color: #000000;
+    background: #fff;
+}
+body.bg-dark .btn-from-left-inside{
+    background: #fff;
+}
+
+.card-box{
+    height: 210px;
+    z-index: 9;
+}
+.card-box > .card-content-box{
+    background: #ffffffc0;   
+    z-index: 99999999;
+}
+body.bg-dark .card-box > .card-content-box{
+    background: #000000d2;
+    color: #fff !important;
+}
+.card-box::before {
+    background: radial-gradient( 800px circle at var(--mouse-x) var(--mouse-y), rgb(0, 45, 243), transparent 50% );
+}
+.card-box::after {
+    background: radial-gradient( 600px circle at var(--mouse-x) var(--mouse-y), rgb(0, 55, 255), transparent 40% );
+}
+
+body.bg-dark .card-box::before {
+    background: radial-gradient( 800px circle at var(--mouse-x) var(--mouse-y), rgb(0, 170, 255), transparent 50% );
+}
+body.bg-dark .card-box::after {
+    background: radial-gradient( 600px circle at var(--mouse-x) var(--mouse-y), rgb(0, 174, 255), transparent 40% );
+}
+
 
 /* project banner end */

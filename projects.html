@@ -8,7 +8,7 @@
 
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/utility.css">
-    <link rel="stylesheet" href="./css/project.css">
+    <link rel="stylesheet" href="./css/lightEff.css">
 </head>
 
 <body>
@@ -24,123 +24,32 @@
     <div class="circle"></div>
     <div class="circle"></div>
 
-    <section class="grid-eff">
+    <section class="card-light-container">
 
-        <div id="cards">
+        <div id="card-main-wraper">
 
-            <div class="card">
-                <div class="card-content">
-                    <div class="card-image">
-                        <i class="fa-duotone fa-apartment"></i>
-                    </div>
-                    <div class="card-info-wrapper">
-                        <div class="card-info">
-                            <i class="fa-duotone fa-apartment"></i>
-                            <div class="card-info-title">
-                                <h3>Apartments</h3>
-                                <h4>Places to be apart. Wait, what?</h4>
-                            </div>
-                        </div>
-                    </div>
+            <div class="card-box">
+                <div class="card-content-box">
                 </div>
             </div>
 
-            <div class="card">
-                <div class="card-content">
-                    <div class="card-image">
-                        <i class="fa-duotone fa-apartment"></i>
-                    </div>
-                    <div class="card-info-wrapper">
-                        <div class="card-info">
-                            <i class="fa-duotone fa-apartment"></i>
-                            <div class="card-info-title">
-                                <h3>Apartments</h3>
-                                <h4>Places to be apart. Wait, what?</h4>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-content">
-                    <div class="card-image">
-                        <i class="fa-duotone fa-apartment"></i>
-                    </div>
-                    <div class="card-info-wrapper">
-                        <div class="card-info">
-                            <i class="fa-duotone fa-apartment"></i>
-                            <div class="card-info-title">
-                                <h3>Apartments</h3>
-                                <h4>Places to be apart. Wait, what?</h4>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-content">
-                    <div class="card-image">
-                        <i class="fa-duotone fa-apartment"></i>
-                    </div>
-                    <div class="card-info-wrapper">
-                        <div class="card-info">
-                            <i class="fa-duotone fa-apartment"></i>
-                            <div class="card-info-title">
-                                <h3>Apartments</h3>
-                                <h4>Places to be apart. Wait, what?</h4>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-content">
-                    <div class="card-image">
-                        <i class="fa-duotone fa-apartment"></i>
-                    </div>
-                    <div class="card-info-wrapper">
-                        <div class="card-info">
-                            <i class="fa-duotone fa-apartment"></i>
-                            <div class="card-info-title">
-                                <h3>Apartments</h3>
-                                <h4>Places to be apart. Wait, what?</h4>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-content">
-                    <div class="card-image">
-                        <i class="fa-duotone fa-apartment"></i>
-                    </div>
-                    <div class="card-info-wrapper">
-                        <div class="card-info">
-                            <i class="fa-duotone fa-apartment"></i>
-                            <div class="card-info-title">
-                                <h3>Apartments</h3>
-                                <h4>Places to be apart. Wait, what?</h4>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
         </div>
     </section>
 
     <script src="./node_modules/jquery/dist/jquery.min.js"></script>
     <script src="./js/index.js"></script>
     <script>
-        document.getElementById("cards").onmousemove = e => {
-    for(const card of document.getElementsByClassName("card")) {
-      const rect = card.getBoundingClientRect(),
-            x = e.clientX - rect.left,
-            y = e.clientY - rect.top;
-  
-      card.style.setProperty("--mouse-x", `${x}px`);
-      card.style.setProperty("--mouse-y", `${y}px`);
-    };
-  }
+        document.getElementById("card-main-wraper").onmousemove = e => {
+            for (const card of document.getElementsByClassName("card-box")) {
+                const rect = card.getBoundingClientRect(),
+                    x = e.clientX - rect.left,
+                    y = e.clientY - rect.top;
+
+                card.style.setProperty("--mouse-x", `${x}px`);
+                card.style.setProperty("--mouse-y", `${y}px`);
+            };
+        }
     </script>
 </body>
 

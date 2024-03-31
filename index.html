@@ -10,6 +10,7 @@
         rel="stylesheet">
     <link rel="stylesheet" href="./css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="./css/lightEff.css">
     <link rel="stylesheet" href="/css/utility.css">
     <link rel="stylesheet" href="/css/style.css">
 </head>
@@ -29,14 +30,14 @@
                                 alt=""> Github</a></li>
                 </ul>
             </div>
-            <div class="col-1"><button class="" id="theme-changer"><i class="fa-solid fa-moon"></i></button></div>
+            <div class="col-1"><button class="" id="theme-changer"><i class="fa-solid "></i></button></div>
         </div>
     </header>
     <!-- header end here -->
 
     <main class="container">
         <!-- first section start -->
-        <section class="hero-section">
+        <section class="hero-section ">
             <div class="row">
                 <div class="col-7">
                     <h1>Hey, I'm Debjeet</h1>
@@ -51,18 +52,40 @@
         </section>
         <!-- first section end -->
 
-        <a href="./index.html#project-sec" id="scroll-down"><i class="fa-solid fa-arrow-down"></i></a>
+        <a class="" href="./index.html#skills-sec" id="scroll-down"><i class="fa-solid fa-arrow-down"></i></a>
+
+        <!-- skills section start -->
+        <section id="skills-sec" class="skills-section container">
+            <div class="project-title d-flex justify-content-between align-items-center mb-4">
+                <h2 class="">My Skills</h2>
+                <a class="nav-link fs-5" href="./projects.html">About me</a>
+            </div>
+
+            <div class="row skills-row">
+                <div class="col-1">
+                    <img class="img-fluid" src="./asset/logos/html.png" alt="">
+                    <p class="">HTML 5</p>
+                </div>
+                <div class="col-1">
+                    <img class="img-fluid" src="./asset/logos/css.png" alt="">
+                    <p class="">CSS 5</p>
+                </div>
+            </div>
+
+        </section>
+        <!-- skills section end -->
 
         <!-- project section start -->
-        <section id="project-sec" class="container project-banner">
-            <div class="d-flex justify-content-between align-items-center mb-4">
+        <section id="project-sec" id=" card-light-container" class="container project-banner ">
+            <div class="d-flex justify-content-between align-items-center mb-4 project-title">
                 <h2 class="">My Latest Works</h2>
                 <a class="nav-link fs-5" href="./projects.html">View all</a>
             </div>
 
-            <div class="row project-sec-row m-0 justify-content-between px-1 gap-3">
+            <div id="card-main-wraper" class="row project-sec-row m-0 justify-content-between px-1 gap-3">
 
-                <div class="col-4">
+                <div class="col-4 card-box">
+                    <div class="card-content-box">
                     <div class="h5">SakeBook</div>
                     <p>A social media app where user can post images , text's, create account, login or do other fun
                         stuff.</p>
@@ -71,8 +94,10 @@
                         <a href="" class="nav-link btn-from-left">Demo<div class="btn-from-left-inside "></div></a>
                     </div>
                 </div>
+                </div>
 
-                <div class="col-4">
+                <div class="col-4 card-box">
+                    <div class="card-content-box">
                     <div class="h5">Grocery Mart</div>
                     <p>E-commerce website built with Bootstrap 5, CSS, and JavaScript for seamless online shopping
                         experience.</p>
@@ -80,9 +105,11 @@
                         <a href="" class="nav-link btn-from-right">Code<div class="btn-from-right-inside "></div></a>
                         <a href="" class="nav-link btn-from-left">Demo<div class="btn-from-left-inside "></div></a>
                     </div>
+                    </div>
                 </div>
 
-                <div class="col-4">
+                <div class="col-4 card-box">
+                    <div class="card-content-box">
                     <div class="h5">Fishbone with JS</div>
                     <p>Fishbone Diagram: A tool for root cause analysis using bone-like branches. made with Jquery and
                         d3js.</p>
@@ -90,18 +117,22 @@
                         <a href="" class="nav-link btn-from-right">Code<div class="btn-from-right-inside "></div></a>
                         <a href="" class="nav-link btn-from-left">Demo<div class="btn-from-left-inside "></div></a>
                     </div>
+                    </div>
                 </div>
 
-                <div class="col-4">
+                <div class="col-4 card-box">
+                    <div class="card-content-box">
                     <div class="h5">Todolist</div>
-                    <p>Todolist: Create, save, complete, or remove tasks. Simple, efficient task management system for your productivity needs.</p>
+                    <p>Create, save, complete, or remove tasks. Simple, efficient task management system for your productivity needs.</p>
                     <div class="project-btn-group d-flex justify-content-between">
                         <a href="https://github.com/Ctmax-ui/Todo_list" target="_blank" class="nav-link btn-from-right">Code<div class="btn-from-right-inside "></div></a>
                         <a href="https://ctmax-ui.github.io/Todo_list/" target="_blank" class="nav-link btn-from-left">Demo<div class="btn-from-left-inside "></div></a>
                     </div>
+                    </div>
                 </div>
 
-                <div class="col-4">
+                <div class="col-4 card-box">
+                    <div class="card-content-box">
                     <div class="h5">Fishbone_with_Js</div>
                     <p>Fishbone Diagram: A tool for root cause analysis using bone-like branches. made with Jquery and
                         d3js.</p>
@@ -109,14 +140,18 @@
                         <a href="" class="nav-link btn-from-right">Code<div class="btn-from-right-inside "></div></a>
                         <a href="" class="nav-link btn-from-left">Demo<div class="btn-from-left-inside "></div></a>
                     </div>
+                    </div>
                 </div>
-                <div class="col-4">
+
+                <div class="col-4 card-box">
+                    <div class="card-content-box">
                     <div class="h5">Fishbone_with_Js</div>
                     <p>Fishbone Diagram: A tool for root cause analysis using bone-like branches. made with Jquery and
                         d3js.</p>
                     <div class="project-btn-group d-flex justify-content-between">
                         <a href="" class="nav-link btn-from-right">Code<div class="btn-from-right-inside "></div></a>
                         <a href="" class="nav-link btn-from-left">Demo<div class="btn-from-left-inside "></div></a>
+                    </div>
                     </div>
                 </div>
 
@@ -148,7 +183,16 @@
     <script src="./js/jquery.min.js"></script>
     <script src="./js/index.js"></script>
     <script>
+ document.getElementById("card-main-wraper").onmousemove = e => {
+            for (const card of document.getElementsByClassName("card-box")) {
+                const rect = card.getBoundingClientRect(),
+                    x = e.clientX - rect.left,
+                    y = e.clientY - rect.top;
 
+                card.style.setProperty("--mouse-x", `${x}px`);
+                card.style.setProperty("--mouse-y", `${y}px`);
+            };
+        }
 
     </script>
 </body>

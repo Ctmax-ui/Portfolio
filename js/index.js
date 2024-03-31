@@ -5,19 +5,43 @@ $(document).ready(() => {
 
 
     // for the theme change btn.
-    $("#theme-changer").on("click", (e) => {
-        $(document.body).toggleClass("bg-dark");
+     // Check if the theme is saved in local storage
+     const isDarkMode = localStorage.getItem('darkMode') === 'true';
 
-        $("#theme-changer i").toggleClass(function togglerIcn() {
-            if($(this).hasClass("fa-sun")){
-                $(this).removeClass("fa-sun")
-                return "fa-moon"
-            }else{
-                $(this).removeClass("fa-moon")
-                return "fa-sun"
-            }
-        })
-    });
+     // Apply the saved theme
+     if (isDarkMode) {
+         $(document.body).addClass('bg-dark');
+         $("#theme-changer i").removeClass('fa-sun').addClass('fa-moon');
+    ifHasClass()
+        
+     }
+ 
+     // Toggle the theme when the button is clicked
+     $("#theme-changer").on("click", (e) => {
+         
+      $(document.body).toggleClass("bg-dark");
+      ifHasClass()
+ 
+         // Save the theme state to local storage
+         const isDarkMode = $(document.body).hasClass('bg-dark');
+         localStorage.setItem('darkMode', isDarkMode.toString());
+
+     });
+
+    function ifHasClass(){
+      if($(document.body).hasClass("bg-dark")){
+        $("#theme-changer i").removeClass("fa-moon")
+        $("#theme-changer i").addClass("fa-sun")
+      }else{
+        $("#theme-changer i").removeClass("fa-sun")
+        $("#theme-changer i").addClass("fa-moon")
+        
+      }
+
+    };
+
+    ifHasClass()
+
 });
 
 // for mouse cursor
