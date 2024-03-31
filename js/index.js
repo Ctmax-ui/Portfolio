@@ -1,26 +1,19 @@
 $(document).ready(() => {
 
 
-
-
-
-    // for the theme change btn.
-     // Check if the theme is saved in local storage
      const isDarkMode = localStorage.getItem('darkMode') === 'true';
-
-     // Apply the saved theme
      if (isDarkMode) {
          $(document.body).addClass('bg-dark');
          $("#theme-changer i").removeClass('fa-sun').addClass('fa-moon');
-    ifHasClass()
+    ifHasClass();
         
-     }
+     };
  
      // Toggle the theme when the button is clicked
      $("#theme-changer").on("click", (e) => {
          
       $(document.body).toggleClass("bg-dark");
-      ifHasClass()
+      ifHasClass();
  
          // Save the theme state to local storage
          const isDarkMode = $(document.body).hasClass('bg-dark');
@@ -36,11 +29,9 @@ $(document).ready(() => {
         $("#theme-changer i").removeClass("fa-sun")
         $("#theme-changer i").addClass("fa-moon")
         
-      }
-
+      };
     };
-
-    ifHasClass()
+    ifHasClass();
 
 });
 

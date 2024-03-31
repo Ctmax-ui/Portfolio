@@ -46,7 +46,7 @@
                     <p><span>Welcome</span> to my digital realm! I'm a tech enthusiast and full-stack developer
                         passionate about open-source projects. When not coding, I delve into sci-fi novels, exploring
                         new worlds both in Technology and literature.</p>
-                    <a href="#">Here Is My CV <i class="fa-solid fa-arrow-right"></i></a>
+                    <a href="#" class="fs-4 nav-link fw-bold text-primary">Here Is My CV <i class="fa-solid fa-arrow-right"></i></a>
                 </div>
                 <div class="col-5 rounded-pill">
                     <img class="img-fluid" src="./asset/hero-bg.png" alt="">
@@ -259,7 +259,6 @@
             </div>
 
 
-            <div class="text-start mt-5 mb-5"><i class="fa-solid fa-arrow-down"></i></div>
         </section>
         <!-- project section end -->
 
@@ -290,7 +289,7 @@ $('#preloader').fadeOut('slow',function(){$(this).remove();});
 
 });
 
-
+//for light boxes
         document.getElementById("card-main-wraper").onmousemove = e => {
             for (const card of document.getElementsByClassName("card-box")) {
                 const rect = card.getBoundingClientRect(),
