@@ -16,6 +16,8 @@
 </head>
 
 <body class="">
+    <div id="preloader"></div>
+
 
     <header class="container mt-4">
         <div class="row p-0 m-0 justify-content-between">
@@ -36,134 +38,230 @@
     <!-- header end here -->
 
     <main class="container">
-        <!-- first section start -->
-        <section class="hero-section ">
+        <!-- hero section start -->
+        <section id="hero-sec" class="hero-section ">
             <div class="row">
                 <div class="col-7">
                     <h1>Hey, I'm Debjeet</h1>
                     <p><span>Welcome</span> to my digital realm! I'm a tech enthusiast and full-stack developer
                         passionate about open-source projects. When not coding, I delve into sci-fi novels, exploring
                         new worlds both in Technology and literature.</p>
+                    <a href="#">Here Is My CV <i class="fa-solid fa-arrow-right"></i></a>
                 </div>
-                <div class="col-5">
+                <div class="col-5 rounded-pill">
                     <img class="img-fluid" src="./asset/hero-bg.png" alt="">
                 </div>
             </div>
         </section>
-        <!-- first section end -->
+        <!-- hero section end -->
 
-        <a class="" href="./index.html#skills-sec" id="scroll-down"><i class="fa-solid fa-arrow-down"></i></a>
+
+        <a class="navigate-sec" href="./index.html#skills-sec" id="scroll-down"><i
+                class="fa-solid fa-arrow-down"></i></a>
+
 
         <!-- skills section start -->
-        <section id="skills-sec" class="skills-section container">
+        <section id="skills-sec" class="skills-section container pt-4">
+
             <div class="project-title d-flex justify-content-between align-items-center mb-4">
                 <h2 class="">My Skills</h2>
-                <a class="nav-link fs-5" href="./projects.html">About me</a>
+                <a class="nav-link fs-5" href="./about.html">About me <i class="fa-solid fa-arrow-right"></i></a>
             </div>
 
-            <div class="row skills-row">
+            <h4 class="ps-1">👨‍💻 Programming and Markup Languages.</h4>
+            <div class="row skills-row justify-content-start gap-4 ps-5">
+
                 <div class="col-1">
-                    <img class="img-fluid" src="./asset/logos/html.png" alt="">
+                    <img class="img-fluid" src="./asset/logos/html.png" alt="HTML">
                     <p class="">HTML 5</p>
                 </div>
+
                 <div class="col-1">
-                    <img class="img-fluid" src="./asset/logos/css.png" alt="">
-                    <p class="">CSS 5</p>
+                    <img class="img-fluid" src="./asset/logos/css.png" alt="CSS">
+                    <p class="">CSS 3</p>
                 </div>
+
+                <div class="col-1">
+                    <img class="img-fluid" src="./asset/logos/javascript.png" alt="JS">
+                    <p class="">JS/ES 6</p>
+                </div>
+
+                <div class="col-1">
+                    <img class="img-fluid" src="./asset/logos/PHP-Logo.png" alt="PHP">
+                    <p class="">PHP</p>
+                </div>
+
+                <div class="col-1">
+                    <img class="img-fluid" src="./asset/logos/mysql.png" alt="MySQL">
+                    <p class="">MySQL</p>
+                </div>
+
+
+            </div>
+
+            <h4 class="ps-1 mt-4">🧰 Frameworks and Libraries.</h4>
+            <div class="row skills-row justify-content-start gap-4 ps-5">
+
+                <div class="col-1">
+                    <img class="img-fluid" src="./asset/logos/sass.png" alt="SASS">
+                    <p class="">SASS</p>
+                </div>
+
+                <div class="col-1">
+                    <img class="img-fluid" src="./asset/logos/bs.png" alt="bootstrap">
+                    <p class="">BS 5</p>
+                </div>
+
+                <div class="col-1">
+                    <img class="img-fluid" src="./asset/logos/jq.png" alt="jquery">
+                    <p class="">jQuery</p>
+                </div>
+
+                <div class="col-1">
+                    <img class="img-fluid" src="./asset/logos/react.png" alt="react">
+                    <p class="">React</p>
+                </div>
+
+                <div class="col-1">
+                    <img class="img-fluid" src="./asset/logos/laravel.png" alt="Laravel">
+                    <p class="">Laravel</p>
+                </div>
+
+                <div class="col-1">
+                    <img class="img-fluid" src="./asset/logos/wordpress.png" alt="Wordpress">
+                    <p class="">WP</p>
+                </div>
+
+            </div>
+
+            <h4 class="ps-1 mt-4">💻 Software and Tools</h4>
+            <div class="row skills-row justify-content-start gap-4 ps-5">
+
+                <div class="col-1">
+                    <img class="img-fluid" src="./asset/logos/git.png" alt="Git">
+                    <p class="">Git</p>
+                </div>
+
+                <div class="col-1">
+                    <img class="img-fluid bg-dark rounded-circle overflow-hidden" src="./asset/logos/github.png"
+                        alt="bootstrap">
+                    <p class="">Github</p>
+                </div>
+
+                <div class="col-1">
+                    <img class="img-fluid" src="./asset/logos/vscode.png" alt="vscode">
+                    <p class="">VScode</p>
+                </div>
+
+                <div class="col-1">
+                    <img class="img-fluid" src="./asset/logos/vstudio.png" alt="vstudio">
+                    <p class="">VStudio</p>
+                </div>
+
+
             </div>
 
         </section>
         <!-- skills section end -->
 
+
         <!-- project section start -->
         <section id="project-sec" id=" card-light-container" class="container project-banner ">
             <div class="d-flex justify-content-between align-items-center mb-4 project-title">
                 <h2 class="">My Latest Works</h2>
-                <a class="nav-link fs-5" href="./projects.html">View all</a>
+                <a class="nav-link fs-5" href="./projects.html">View all <i class="fa-solid fa-arrow-right"></i></a>
             </div>
 
             <div id="card-main-wraper" class="row project-sec-row m-0 justify-content-between px-1 gap-3">
 
                 <div class="col-4 card-box">
                     <div class="card-content-box">
-                    <div class="h5">SakeBook</div>
-                    <p>A social media app where user can post images , text's, create account, login or do other fun
-                        stuff.</p>
-                    <div class="project-btn-group d-flex justify-content-between">
-                        <a href="" class="nav-link btn-from-right">Code<div class="btn-from-right-inside "></div></a>
-                        <a href="" class="nav-link btn-from-left">Demo<div class="btn-from-left-inside "></div></a>
-                    </div>
-                </div>
-                </div>
-
-                <div class="col-4 card-box">
-                    <div class="card-content-box">
-                    <div class="h5">Grocery Mart</div>
-                    <p>E-commerce website built with Bootstrap 5, CSS, and JavaScript for seamless online shopping
-                        experience.</p>
-                    <div class="project-btn-group d-flex justify-content-between">
-                        <a href="" class="nav-link btn-from-right">Code<div class="btn-from-right-inside "></div></a>
-                        <a href="" class="nav-link btn-from-left">Demo<div class="btn-from-left-inside "></div></a>
-                    </div>
+                        <div class="h5">SakeBook</div>
+                        <p>A social media app where user can post images , text's, create account, login or do other fun
+                            stuff.</p>
+                        <div class="project-btn-group d-flex justify-content-between">
+                            <a href="" class="nav-link btn-from-right">Code<div class="btn-from-right-inside "></div>
+                                </a>
+                            <a href="" class="nav-link btn-from-left">Demo<div class="btn-from-left-inside "></div></a>
+                        </div>
                     </div>
                 </div>
 
                 <div class="col-4 card-box">
                     <div class="card-content-box">
-                    <div class="h5">Fishbone with JS</div>
-                    <p>Fishbone Diagram: A tool for root cause analysis using bone-like branches. made with Jquery and
-                        d3js.</p>
-                    <div class="project-btn-group d-flex justify-content-between">
-                        <a href="" class="nav-link btn-from-right">Code<div class="btn-from-right-inside "></div></a>
-                        <a href="" class="nav-link btn-from-left">Demo<div class="btn-from-left-inside "></div></a>
-                    </div>
-                    </div>
-                </div>
-
-                <div class="col-4 card-box">
-                    <div class="card-content-box">
-                    <div class="h5">Todolist</div>
-                    <p>Create, save, complete, or remove tasks. Simple, efficient task management system for your productivity needs.</p>
-                    <div class="project-btn-group d-flex justify-content-between">
-                        <a href="https://github.com/Ctmax-ui/Todo_list" target="_blank" class="nav-link btn-from-right">Code<div class="btn-from-right-inside "></div></a>
-                        <a href="https://ctmax-ui.github.io/Todo_list/" target="_blank" class="nav-link btn-from-left">Demo<div class="btn-from-left-inside "></div></a>
-                    </div>
+                        <div class="h5">Grocery Mart</div>
+                        <p>E-commerce website built with Bootstrap 5, CSS, and JavaScript for seamless online shopping
+                            experience.</p>
+                        <div class="project-btn-group d-flex justify-content-between">
+                            <a href="" class="nav-link btn-from-right">Code<div class="btn-from-right-inside "></div>
+                                </a>
+                            <a href="" class="nav-link btn-from-left">Demo<div class="btn-from-left-inside "></div></a>
+                        </div>
                     </div>
                 </div>
 
                 <div class="col-4 card-box">
                     <div class="card-content-box">
-                    <div class="h5">Fishbone_with_Js</div>
-                    <p>Fishbone Diagram: A tool for root cause analysis using bone-like branches. made with Jquery and
-                        d3js.</p>
-                    <div class="project-btn-group d-flex justify-content-between">
-                        <a href="" class="nav-link btn-from-right">Code<div class="btn-from-right-inside "></div></a>
-                        <a href="" class="nav-link btn-from-left">Demo<div class="btn-from-left-inside "></div></a>
-                    </div>
+                        <div class="h5">Fishbone with JS</div>
+                        <p>Fishbone Diagram: A tool for root cause analysis using bone-like branches. made with Jquery
+                            and
+                            d3js.</p>
+                        <div class="project-btn-group d-flex justify-content-between">
+                            <a href="" class="nav-link btn-from-right">Code<div class="btn-from-right-inside "></div>
+                                </a>
+                            <a href="" class="nav-link btn-from-left">Demo<div class="btn-from-left-inside "></div></a>
+                        </div>
                     </div>
                 </div>
 
                 <div class="col-4 card-box">
                     <div class="card-content-box">
-                    <div class="h5">Fishbone_with_Js</div>
-                    <p>Fishbone Diagram: A tool for root cause analysis using bone-like branches. made with Jquery and
-                        d3js.</p>
-                    <div class="project-btn-group d-flex justify-content-between">
-                        <a href="" class="nav-link btn-from-right">Code<div class="btn-from-right-inside "></div></a>
-                        <a href="" class="nav-link btn-from-left">Demo<div class="btn-from-left-inside "></div></a>
+                        <div class="h5">Todolist</div>
+                        <p>Create, save, complete, or remove tasks. Simple, efficient task management system for your
+                            productivity needs.</p>
+                        <div class="project-btn-group d-flex justify-content-between">
+                            <a href="https://github.com/Ctmax-ui/Todo_list" target="_blank"
+                                class="nav-link btn-from-right">Code<div class="btn-from-right-inside "></div></a>
+                            <a href="https://ctmax-ui.github.io/Todo_list/" target="_blank"
+                                class="nav-link btn-from-left">Demo<div class="btn-from-left-inside "></div></a>
+                        </div>
                     </div>
+                </div>
+
+                <div class="col-4 card-box">
+                    <div class="card-content-box">
+                        <div class="h5">Fishbone_with_Js</div>
+                        <p>Fishbone Diagram: A tool for root cause analysis using bone-like branches. made with Jquery
+                            and
+                            d3js.</p>
+                        <div class="project-btn-group d-flex justify-content-between">
+                            <a href="" class="nav-link btn-from-right">Code<div class="btn-from-right-inside "></div>
+                                </a>
+                            <a href="" class="nav-link btn-from-left">Demo<div class="btn-from-left-inside "></div></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-4 card-box">
+                    <div class="card-content-box">
+                        <div class="h5">Fishbone_with_Js</div>
+                        <p>Fishbone Diagram: A tool for root cause analysis using bone-like branches. made with Jquery
+                            and
+                            d3js.</p>
+                        <div class="project-btn-group d-flex justify-content-between">
+                            <a href="" class="nav-link btn-from-right">Code<div class="btn-from-right-inside "></div>
+                                </a>
+                            <a href="" class="nav-link btn-from-left">Demo<div class="btn-from-left-inside "></div></a>
+                        </div>
                     </div>
                 </div>
 
             </div>
 
-            
+
             <div class="text-start mt-5 mb-5"><i class="fa-solid fa-arrow-down"></i></div>
         </section>
-
-
         <!-- project section end -->
-
 
 
 
@@ -183,7 +281,17 @@
     <script src="./js/jquery.min.js"></script>
     <script src="./js/index.js"></script>
     <script>
- document.getElementById("card-main-wraper").onmousemove = e => {
+document.documentElement.classList.add("js");
+
+// dom is loaded
+jQuery(document).ready(function($) {  
+// fade out preloader
+$('#preloader').fadeOut('slow',function(){$(this).remove();});
+
+});
+
+
+        document.getElementById("card-main-wraper").onmousemove = e => {
             for (const card of document.getElementsByClassName("card-box")) {
                 const rect = card.getBoundingClientRect(),
                     x = e.clientX - rect.left,

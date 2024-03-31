@@ -7,6 +7,7 @@
 }
 body{
     /* cursor: none; */
+    /* overflow: hidden */
 }
 .container{
     max-width: 900px !important;
@@ -74,6 +75,40 @@ main{
     margin-top: 40px;
 }
 
+.navigate-sec{
+    position: relative;
+}
+@keyframes nm {
+    0%{
+
+    }
+    100%{
+
+    }
+}
+
+.navigate-sec i{
+    border: 1px solid #000;
+    border-radius: 100%;
+    padding: 10px 14px;
+    font-size: 1.2rem;
+    color: #000;
+    transition: all .5s ease;
+}
+
+.navigate-sec i:hover{
+    background: #000;
+    color: #fff;
+}
+
+body.bg-dark .navigate-sec i{
+    border-color: #fff;
+    color: #f6f6f6;
+}
+body.bg-dark .navigate-sec i:hover{
+    background: #ffffff;
+    color: #000000;
+}
 /* first section start */
 body.bg-dark .hero-section h1{
     color: #fff;
@@ -98,6 +133,17 @@ body.bg-dark .hero-section p{
 }
 
 
+.hero-section .col-5{
+  border-radius: 20px 100px 20px 100px !important;
+  padding: 0;
+  overflow: hidden;
+  border: 2px solid #0505059b;
+  margin: 30px 0 0 0;
+}
+body.bg-dark .hero-section .col-5{
+  border-color: #fff;
+}
+
 .hero-section .col-7{
     margin-top: 7rem;
 }
@@ -110,18 +156,38 @@ body.bg-dark .hero-section p{
 
 /* skills section start */
 .skills-section{
-    margin-top: 130px;
+    margin-top: 10rem;
 }
-
+body.bg-dark .skills-section h4{
+color: #e2e2e2;
+}
+.skills-row{
+    padding: 0 1rem;
+    padding-top: 10px;
+}
 .skills-row .col-1{
     text-align: center;
     padding: .5rem;
+    border: 1px solid #888888ba;
+    border-radius: 5px;
+    width: 9%;
+    height: 108px;
+    transition: box-shadow .4s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-size: .9rem;
+}
+.skills-row .col-1:hover{
+    box-shadow: 3px 3px 5px lightblue;
 }
 .skills-row .col-1 p{
     font-weight: 600;
-
+    margin: 7px 0 0 0;
 }
-
+body.bg-dark .skills-row .col-1 p{
+    color: #fff;
+}
 
 
 
