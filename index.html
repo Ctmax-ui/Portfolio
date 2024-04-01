@@ -56,10 +56,8 @@
         </section>
         <!-- hero section end -->
 
-
         <a class="navigate-sec" href="./index.html#skills-sec" id="scroll-down"><i
                 class="fa-solid fa-arrow-down"></i></a>
-
 
         <!-- skills section start -->
         <section id="skills-sec" class="skills-section container pt-4">
@@ -164,7 +162,6 @@
 
         </section>
         <!-- skills section end -->
-
 
         <!-- project section start -->
         <section id="project-sec" id=" card-light-container" class="container project-banner ">
@@ -281,12 +278,10 @@
     <script src="./js/jquery.min.js"></script>
     <script>
 document.documentElement.classList.add("js");
-// dom is loaded
 jQuery(document).ready(function($) {  
-// fade out preloader
 if(localStorage.getItem("darkMode")=="true"){
     $('#preloader').addClass("bg-dark")
-}
+};
 $('#preloader').fadeOut('slow',function(){$(this).remove();});
 });
     </script>
