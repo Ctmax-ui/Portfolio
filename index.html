@@ -16,6 +16,7 @@
 </head>
 
 <body class="">
+
     <div id="preloader"></div>
 
 
@@ -283,6 +284,9 @@ document.documentElement.classList.add("js");
 // dom is loaded
 jQuery(document).ready(function($) {  
 // fade out preloader
+if(localStorage.getItem("darkMode")=="true"){
+    $('#preloader').addClass("bg-dark")
+}
 $('#preloader').fadeOut('slow',function(){$(this).remove();});
 });
     </script>

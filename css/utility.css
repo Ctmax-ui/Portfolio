@@ -74,7 +74,7 @@
     overflow: visible;
     
     /* You can change the background color and image URL here.  This solution works with animated .svg and animated .gif */
-    background: #ffffff url('https://gist.githubusercontent.com/condensed-io/d4da34ecfdeda137ad4787fbd244ed27/raw/b96d939e9baf98ff79394c11af83c10a6acdd241/pac.svg') no-repeat center center;
+    background: #ffffff url('../asset/logos/Bean\ Eater@1x-1.0s-200px-200px.svg') no-repeat center center;
   }
 
 
