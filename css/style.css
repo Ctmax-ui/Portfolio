@@ -173,7 +173,6 @@ color: #e2e2e2;
     border: 1px solid #888888ba;
     border-radius: 5px;
     width: 9%;
-    height: 108px;
     transition: box-shadow .4s ease;
     display: flex;
     flex-direction: column;
