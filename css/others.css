@@ -10,6 +10,9 @@
     overflow: hidden;
     margin-bottom: 20px;
 }
+body.bg-dark .project-card{
+    border-color: #ccc !important;
+}
 
 .project-image {
     width: 100%;
@@ -20,9 +23,16 @@
 .project-details {
     padding: 20px;
 }
+body.bg-dark .project-details h4{
+    color: #fff;
+}
 
 .project-description {
     margin-top: 10px;
+
+}
+body.bg-dark .project-description{
+    color: #ccc;
 }
 
 .project-button {
