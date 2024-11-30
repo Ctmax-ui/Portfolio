@@ -3,8 +3,7 @@ import React from 'react'
 const navbar = () => {
   return (
     <>
-    <nav>helloooooooooo</nav>
-    
+    <div className='border glass-gradient h-[90%] w-[5%] fixed right-10'>navbar</div>
     </>
   )
 }

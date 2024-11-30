@@ -1,0 +1,231 @@
+'use client'
+import React, { useEffect, useRef } from "react";
+
+interface MousePosition {
+  msX: number;
+  msY: number;
+  updms: (n: { x: number; y: number }) => void;
+}
+
+interface Point {
+  x: number;
+  y: number;
+  z: number;
+  xPos: number;
+  yPos: number;
+  updPos: (x: number, y: number, z: number) => void;
+}
+
+interface Line {
+  x: number;
+  y: number;
+  ang: number;
+  ang_: number;
+  s: number;
+  sz: number;
+  ease: number;
+  draw: ($: CanvasRenderingContext2D, tx: number, ty: number) => void;
+}
+
+interface CanvasAnimationProps {
+  speed?: number;
+  colors?: string[];
+}
+
+const CanvasAnimation: React.FC<CanvasAnimationProps> = ({ 
+  speed = .1, 
+  colors = ["hsla(0, 0%,25%, 1)", "hsla(0,0%,15%, 1)", "hsla(0,0%,10%, 1)", "hsla(0, 0%,5%,1)"] 
+}) => {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const arr: Line[] = [];
+  const pts: Point[] = [];
+  const s = 5, num = 100, f = -900;
+
+  let w: number, h: number;
+  let vel_x: number, vel_y: number;
+  let cnt = 0;
+  let ms: MousePosition;
+
+  const rad = Math.PI / 180;
+
+  // Helper functions
+  const rnd = (min: number, max: number) => min + Math.random() * (max - min);
+
+  class Ln {
+    x: number;
+    y: number;
+    ang: number;
+    ang_: number;
+    s: number;
+    sz: number;
+    ease: number;
+
+    constructor(x: number, y: number) {
+      this.x = x;
+      this.y = y;
+      this.ang = 45;
+      this.ang_ = 45;
+      this.s = 0.9;
+      this.sz = rnd(2, 80);
+      this.ease = Math.random();
+    }
+
+    draw($: CanvasRenderingContext2D, tx: number, ty: number) {
+      this.x += (tx - this.x) * this.ease;
+      this.y += (ty - this.y) * this.ease;
+      this.s += (s - this.s) * 0.005;
+      const s_ = this.s * 0.05;
+      const radi = this.ang * rad;
+      const radi_ = this.ang_ * rad;
+      const l3 = s_ * Math.cos(radi_);
+      const l4 = s_ * Math.sin(radi_);
+      this.ang += 0.33 * speed;
+      if (this.ang >= 360) this.ang = 0;
+      this.ang_ -= 0.33 * speed;
+      if (this.ang_ <= 0) this.ang_ = 360;
+      const x3 = this.x + l3;
+      const y3 = this.y - l4;
+      const g = $.createRadialGradient(x3, y3, 0, x3, y3, this.sz);
+      g.addColorStop(0, colors[0]);
+      g.addColorStop(0.5, colors[1]);
+      g.addColorStop(0.8, colors[2]);
+      g.addColorStop(1, colors[3]);
+      $.beginPath();
+      $.fillStyle = g;
+      $.arc(x3, y3, this.sz, 0, Math.PI * 2);
+      $.fill();
+    }
+  }
+
+  class Pt {
+    x: number;
+    y: number;
+    z: number;
+    xPos: number;
+    yPos: number;
+
+    constructor(x: number, y: number, z: number) {
+      this.x = x;
+      this.y = y;
+      this.z = z;
+      this.xPos = w * 0.5;
+      this.yPos = h * 0.5;
+    }
+
+    updPos(x: number, y: number, z: number) {
+      this.x = x;
+      this.y = y;
+      this.z = z;
+      const sc = f / (f + this.z);
+      this.xPos = vel_x + this.x * sc;
+      this.yPos = vel_y + this.y * sc;
+    }
+  }
+
+  const setCanvasSize = (canvas: HTMLCanvasElement) => {
+    const context = canvas.getContext("2d");
+    if (context) {
+      w = canvas.width = window.innerWidth;
+      h = canvas.height = window.innerHeight;
+      vel_x = w * 0.5;
+      vel_y = h * 0.5;
+    }
+  };
+
+  const handleResize = () => {
+    if (canvasRef.current) {
+      setCanvasSize(canvasRef.current);
+    }
+  };
+
+  const initPoints = () => {
+    for (let i = 0; i < num; i++) {
+      const x = w * 2 * Math.random() - w;
+      const y = h * 2 * Math.random() - h;
+      const z = Math.random() * 3000 - 1000;
+      const p = new Pt(x, y, z);
+      pts[i] = p;
+    }
+  };
+
+  const initLines = () => {
+    for (let i = 0; i < pts.length; i++) {
+      const p = pts[i];
+      const l = new Ln(p.xPos, p.yPos);
+      arr[i] = l;
+    }
+  };
+
+  const animate = () => {
+    const canvas = canvasRef.current;
+    if (canvas) {
+      const $ = canvas.getContext("2d");
+      if ($) {
+        $.clearRect(0, 0, w, h);
+
+        // Update points with normalized mouse interaction
+        const angY = ((ms.msX - vel_x) / w) * 0.05 * speed; // Normalize by width
+        const angX = ((ms.msY - vel_y) / h) * 0.03 * speed; // Normalize by height
+        const cosY = Math.cos(angY);
+        const sinY = Math.sin(angY);
+        const cosX = Math.cos(angX);
+        const sinX = Math.sin(angX);
+
+        pts.forEach((p) => {
+          const x1 = p.x * cosY - p.z * sinY;
+          const z1 = p.z * cosY + p.x * sinY;
+          const y1 = p.y * cosX - z1 * sinX;
+          const z2 = z1 * cosX + p.y * sinX;
+          p.updPos(x1, y1, z2);
+        });
+
+        // Draw lines
+        for (let i = 0; i < cnt; i++) {
+          const l = arr[i];
+          const p = pts[i];
+          l.draw($, p.xPos, p.yPos);
+        }
+
+        cnt += 5;
+        if (cnt >= arr.length) cnt = arr.length;
+      }
+    }
+
+    requestAnimationFrame(animate);
+  };
+
+  useEffect(() => {
+    if (canvasRef.current) {
+      const canvas = canvasRef.current;
+      setCanvasSize(canvas);
+
+      ms = {
+        msX: vel_x,
+        msY: vel_y,
+        updms: (n) => {
+          ms.msX = n.x;
+          ms.msY = n.y;
+        },
+      };
+
+      initPoints();
+      initLines();
+      animate();
+
+      window.addEventListener("resize", handleResize);
+      window.addEventListener("mousemove", (e) => ms.updms({ x: e.pageX, y: e.pageY }));
+      window.addEventListener("touchmove", (e) => {
+        e.preventDefault();
+        ms.updms({ x: e.touches[0].pageX, y: e.touches[0].pageY });     
+      });
+
+      return () => {
+        window.removeEventListener("resize", handleResize);
+      };
+    }
+  }, []);
+
+  return <canvas className="fixed w-screen h-screen bg-black" ref={canvasRef} style={{ display: "block", zIndex: '-1' }} />;
+};
+
+export default CanvasAnimation;
