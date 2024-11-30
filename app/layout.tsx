@@ -39,7 +39,8 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased relative h-screen `}
       >
-        <CanvasAnimation colors={["hsla(0, 0%, 100%, 1)", "hsla(0, 0%, 90%, 1)", "hsla(0, 0%, 70%, 1)", "hsla(0, 0%, 50%, 1)"] } />
+
+        <CanvasAnimation  />
         <div className="py-8">
         <ProfileCard />
         {children}

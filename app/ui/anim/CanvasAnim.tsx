@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import React, { useEffect, useRef } from "react";
 
 interface MousePosition {
@@ -32,14 +32,97 @@ interface CanvasAnimationProps {
   colors?: string[];
 }
 
-const CanvasAnimation: React.FC<CanvasAnimationProps> = ({ 
-  speed = .1, 
-  colors = ["hsla(0, 0%,25%, 1)", "hsla(0,0%,15%, 1)", "hsla(0,0%,10%, 1)", "hsla(0, 0%,5%,1)"] 
+const CanvasAnimation: React.FC<CanvasAnimationProps> = ({
+  speed = 0.1,
+  colors = [
+    "hsla(0, 0%,25%, 1)",
+    "hsla(0,0%,15%, 1)",
+    "hsla(0,0%,10%, 1)",
+    "hsla(0, 0%,5%,1)",
+  ],
 }) => {
+  const colorInputs = useRef<HTMLFormElement | null>(null);
+
+  useEffect(() => {
+    function hslaToHex(h: number, s: number, l: number): string {
+      l /= 100;
+      const chroma = (1 - Math.abs(2 * l - 1)) * (s / 100);
+      const x = chroma * (1 - Math.abs((h / 60) % 2 - 1));
+      const m = l - chroma / 2;
+  
+      let r = 0,
+        g = 0,
+        b = 0;
+  
+      if (h >= 0 && h < 60) {
+        r = chroma;
+        g = x;
+        b = 0;
+      } else if (h >= 60 && h < 120) {
+        r = x;
+        g = chroma;
+        b = 0;
+      } else if (h >= 120 && h < 180) {
+        r = 0;
+        g = chroma;
+        b = x;
+      } else if (h >= 180 && h < 240) {
+        r = 0;
+        g = x;
+        b = chroma;
+      } else if (h >= 240 && h < 300) {
+        r = x;
+        g = 0;
+        b = chroma;
+      } else if (h >= 300 && h < 360) {
+        r = chroma;
+        g = 0;
+        b = x;
+      }
+  
+      // Normalize to 0-255 and convert to hexadecimal
+      r = Math.round((r + m) * 255);
+      g = Math.round((g + m) * 255);
+      b = Math.round((b + m) * 255);
+  
+      return `#${((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1)}`;
+    }
+  
+    function parseHslaToHex(hsla: string): string {
+      const match = hsla.match(/hsla?\((\d+),\s*(\d+)%,\s*(\d+)%,\s*(\d*\.?\d+)\)/);
+      if (match) {
+        const [, h, s, l, a] = match.map(Number);
+        return hslaToHex(h, s, l, a);
+      }
+      return "#000000"; // Default to black if parsing fails
+    }
+    
+    if (colorInputs.current) {
+      const hexColors = colors.map(parseHslaToHex);
+      colorInputs.current.color0.value = hexColors[0];
+      colorInputs.current.color1.value = hexColors[1];
+      colorInputs.current.color2.value = hexColors[2];
+      colorInputs.current.color3.value = hexColors[3];
+    }
+  });
+
+  const onColorChangeHandler = () => {
+    if (colorInputs.current) {
+      colors = [
+        colorInputs.current.color0.value,
+        colorInputs.current.color1.value,
+        colorInputs.current.color2.value,
+        colorInputs.current.color3.value,
+      ];
+    }
+  };
+
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const arr: Line[] = [];
   const pts: Point[] = [];
-  const s = 5, num = 100, f = -900;
+  const s = 5,
+    num = 100,
+    f = -900;
 
   let w: number, h: number;
   let vel_x: number, vel_y: number;
@@ -213,10 +296,12 @@ const CanvasAnimation: React.FC<CanvasAnimationProps> = ({
       animate();
 
       window.addEventListener("resize", handleResize);
-      window.addEventListener("mousemove", (e) => ms.updms({ x: e.pageX, y: e.pageY }));
+      window.addEventListener("mousemove", (e) =>
+        ms.updms({ x: e.pageX, y: e.pageY })
+      );
       window.addEventListener("touchmove", (e) => {
         e.preventDefault();
-        ms.updms({ x: e.touches[0].pageX, y: e.touches[0].pageY });     
+        ms.updms({ x: e.touches[0].pageX, y: e.touches[0].pageY });
       });
 
       return () => {
@@ -225,7 +310,21 @@ const CanvasAnimation: React.FC<CanvasAnimationProps> = ({
     }
   }, []);
 
-  return <canvas className="fixed w-screen h-screen bg-black" ref={canvasRef} style={{ display: "block", zIndex: '-1' }} />;
+  return (
+    <>
+      <form className="fixed" ref={colorInputs} onChange={onColorChangeHandler}>
+        <input type="color" name="color0" id="" />
+        <input type="color" name="color1" id="" />
+        <input type="color" name="color2" id="" />
+        <input type="color" name="color3" id="" />
+      </form>
+      <canvas
+        className="fixed w-screen h-screen"
+        ref={canvasRef}
+        style={{ display: "block", zIndex: "-1" }}
+      />
+    </>
+  );
 };
 
 export default CanvasAnimation;
