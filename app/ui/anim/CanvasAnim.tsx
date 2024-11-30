@@ -91,8 +91,8 @@ const CanvasAnimation: React.FC<CanvasAnimationProps> = ({
     function parseHslaToHex(hsla: string): string {
       const match = hsla.match(/hsla?\((\d+),\s*(\d+)%,\s*(\d+)%,\s*(\d*\.?\d+)\)/);
       if (match) {
-        const [, h, s, l, a] = match.map(Number);
-        return hslaToHex(h, s, l, a);
+        const [, h, s, l] = match.map(Number);
+        return hslaToHex(h, s, l);
       }
       return "#000000"; // Default to black if parsing fails
     }
