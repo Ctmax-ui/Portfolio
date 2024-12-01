@@ -1,11 +1,18 @@
-import React from 'react'
-
+import React from "react";
+import { TiThMenuOutline } from "react-icons/ti";
 const navbar = () => {
   return (
     <>
-    <div className='border glass-gradient h-[90%] w-[5%] fixed right-10'>navbar</div>
+      <div className="border glass-gradient h-[570px] w-[60px] fixed right-5 top-[8%] hidden lg:block rounded-full">
+        navbar
+      </div>
+      <div className="block lg:hidden">
+        <button className="h-[40px] w-[40px] fixed top-5 right-5 flex justify-center items-center border glass-gradient rounded-sm ">
+          <TiThMenuOutline />
+        </button>
+      </div>
     </>
-  )
-}
+  );
+};
 
-export default navbar
+export default navbar;

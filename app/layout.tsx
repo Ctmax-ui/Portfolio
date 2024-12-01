@@ -10,9 +10,9 @@ export const metadata: Metadata = {
     template: "%s | Debjeet's Portfolio",
     default: "Debjeet's Portfolio",
   },
-  description: 'The official portfolio of debjeet',
-  metadataBase: new URL('https://debjeet-portfolio.vercel.app'),
-}
+  description: "The official portfolio of debjeet",
+  metadataBase: new URL("https://debjeet-portfolio.vercel.app"),
+};
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -25,26 +25,25 @@ const geistMono = localFont({
   weight: "100 900",
 });
 
-
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-
-
-
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased relative h-screen `}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased `}
       >
-
-        <CanvasAnimation  />
-        <div className="py-8">
-        <ProfileCard />
-        {children}
-        <Navbar />
+        <CanvasAnimation />
+        <div className="py-8 relative h-svh w-svh container mx-auto">
+          <ProfileCard
+            className={
+              "h-[570px] w-[25%] max-w-[400px] fixed left-10 top-[8%] p-5 glass-gradient hidden lg:block"
+            }
+          />
+          {children}
+          <Navbar />
         </div>
       </body>
     </html>

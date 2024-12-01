@@ -25,7 +25,7 @@ const Section: React.FC<SectionProps> = ({ children, className }) => {
       controls.start({
         scale: 0.8,
         opacity: 0,
-        y: 50,
+        y: 30,
         transition: {
           duration: 0.6,
           ease: "easeIn",
