@@ -14,12 +14,12 @@ export default function HeroSect() {
 
       <div className="max-w-7xl mx-auto">
         {/* Introduce label */}
-        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-900/50 backdrop-blur-sm mb-4">
+        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-900/50 backdrop-blur-sm lg:mb-4">
           <p className="w-4 h-4 text-emerald-500"><FaUserGraduate /></p>
           <span className="text-sm font-medium text-zinc-100">INTORODUCTION</span>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="grid lg:grid-cols-2 lg:gap-12 items-top">
           <div className="space-y-4 xl:space-y-8 order-2 lg:order-1">
             {/* Main heading */}
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
@@ -73,14 +73,14 @@ export default function HeroSect() {
           </div>
 
           {/* Image section */}
-          <div className="order-1 lg:order-2">
-            <div className="flex justify-center items-center">
+          <div className="order-1 lg:order-2 scale-[.8] lg:scale-1">
+            <div className="flex justify-center items-start">
               <Image
                 src="/pic-one.png"
                 alt="Professional portrait"
                 width={380}
-                height={500}
-                className="object-cover rounded-lg"
+                height={380}
+                className="object-cover rounded-lg w-auto h-auto"
                 priority
               />
             </div>

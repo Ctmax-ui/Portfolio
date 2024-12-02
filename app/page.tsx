@@ -1,6 +1,9 @@
 import Section from "./ui/anim/Section";
+import AboutSection from "./ui/components/AboutSection";
+import ContactSection from "./ui/components/ContactSection";
 import HeroSect from "./ui/components/HeroSect";
 import ProfileCard from "./ui/components/profileCard";
+import SkillsSection from "./ui/components/SkillCategory ";
 
 const Page: React.FC = () => {
   return (
@@ -15,11 +18,14 @@ const Page: React.FC = () => {
       <Section className="border glass-gradient border-black  h-auto lg:h-[570px] w-full ">
         <HeroSect />
       </Section>
-      <Section className="border glass-gradient border-black h-[90vh] lg:h-[570px] w-full ">
-        about page
+      <Section className="border glass-gradient border-black h-auto lg:h-[570px] w-full ">
+        <AboutSection />
       </Section>
-      <Section className="border glass-gradient border-black h-[90vh] lg:h-[570px] w-full">
-        skills page
+      <Section className="border glass-gradient border-black h-auto xl:h-[570px] w-full">
+        <SkillsSection /> 
+      </Section>
+      <Section className="border glass-gradient border-black h-auto xl:h-[570px] w-full">
+        <ContactSection /> 
       </Section>
     </div>
   );
