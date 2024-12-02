@@ -55,13 +55,12 @@ export default function ContactSection() {
         body: JSON.stringify(data),
       });
       const response = await result.json();
-      console.log(response);
       if (response.success) {
         formD?.current?.reset();
         setMessage(response.message);
       }
-    } catch (err) {
-      console.log(err);
+    } catch {
+      // console.log(err);
       setMessage("Failed to send message. Please try again.");
     } finally {
       setSending(false);
