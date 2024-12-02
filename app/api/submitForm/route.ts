@@ -1,4 +1,6 @@
 'use server'
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 import nodemailer from "nodemailer";
 import { NextRequest, NextResponse } from "next/server";
 export async function POST(req: NextRequest) {
