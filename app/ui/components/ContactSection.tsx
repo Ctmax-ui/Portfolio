@@ -70,13 +70,16 @@ export default function ContactSection() {
   return (
     <>
       {message || sending ? (
-        <div className="w-full h-[80vh] flex justify-center items-center">
+        <div
+          className="w-full h-[80vh] flex justify-center items-center"
+          id="contact"
+        >
           <p className="mt-2 text-4xl font-semibold text-center text-emerald-500 ">
-            {message || 'Sending...'}
+            {message || "Sending..."}
           </p>
         </div>
       ) : (
-        <div className=" px-6 py-6" id="contact">
+        <section className=" px-6 py-6" id="contact">
           <div className="max-w-6xl mx-auto">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-zinc-900/50 backdrop-blur-sm mb-3">
               <CiMail className="w-4 h-4 text-emerald-500" />
@@ -113,7 +116,11 @@ export default function ContactSection() {
                 ))}
               </div>
 
-              <form onSubmit={handleSubmit} ref={formD} className="space-y-2 lg:space-y-6">
+              <form
+                onSubmit={handleSubmit}
+                ref={formD}
+                className="space-y-2 lg:space-y-6"
+              >
                 <input
                   type="text"
                   name="name"
@@ -149,7 +156,7 @@ export default function ContactSection() {
               </form>
             </div>
           </div>
-        </div>
+        </section>
       )}
     </>
   );

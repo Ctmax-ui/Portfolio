@@ -6,7 +6,7 @@ import { IoCheckmarkDoneSharp } from "react-icons/io5";
 
 export default function HeroSect() {
   return (
-    <div className="relative px-4 py-5 overflow-hidden">
+    <section className="relative px-4 py-5 overflow-hidden" id='home'>
       {/* Background triangle decoration */}
       <div className="absolute right-0 top-0 transform translate-x-1/3 -translate-y-1/3">
         <div className="w-full h-full border-2 border-zinc-800 transform rotate-45" />
@@ -88,7 +88,7 @@ export default function HeroSect() {
         </div>
         
       </div>
-    </div>
+    </section>
   )
 }
 

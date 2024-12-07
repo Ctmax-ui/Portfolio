@@ -40,7 +40,7 @@ and discovering their potential to solve real-world problems.`,
   }[];
 }) {
   return (
-    <div className=" px-6 py-12">
+    <section className=" px-6 py-12" id="about">
       <div className="">
         {/* About Me Label */}
         <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-zinc-900/50 backdrop-blur-sm mb-8">
@@ -108,6 +108,6 @@ and discovering their potential to solve real-world problems.`,
           ))}
         </div>
       </div>
-    </div>
+    </section>
   );
 }

@@ -18,7 +18,7 @@ const ProfileCard = ({ className }: { className?: string }) => {
   ];
 
   return (
-    <div className={` ${className}`}>
+    <section className={` ${className}`}>
       <div className="w-full max-w-sm mx-auto ">
         <div className="">
           <div className="flex flex-col items-center space-y-4">
@@ -115,7 +115,7 @@ const ProfileCard = ({ className }: { className?: string }) => {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

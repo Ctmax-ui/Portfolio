@@ -64,7 +64,7 @@ export default function SkillsSection() {
   ]
 
   return (
-    <div className=" px-6 py-4" id="skills">
+    <section className=" px-6 py-4" id="skills">
       <div className="max-w-6xl mx-auto">
         <h2 className="text-4xl font-bold text-white mb-5">My <span className="text-emerald-500">Advantages</span></h2>
         
@@ -110,7 +110,7 @@ export default function SkillsSection() {
           ))}
         </div>
       </div>
-    </div>
+    </section>
   )
 }
 
