@@ -4,7 +4,7 @@ import { TiThMenuOutline } from "react-icons/ti";
 import { FaHome } from "react-icons/fa";
 import { IoMdPerson } from "react-icons/io";
 import { MdOutlineWork } from "react-icons/md";
-import { FaGraduationCap } from "react-icons/fa";
+// import { FaGraduationCap } from "react-icons/fa";
 import { MdOutlineEmail } from "react-icons/md";
 import { FaListUl } from "react-icons/fa";
 import { IoDocumentText } from "react-icons/io5";
@@ -35,15 +35,16 @@ const navItems: {
     href: "#skills",
     label: "Skills",
   },
-  {
-    icon: <FaGraduationCap className="h-5 w-5" />,
-    href: "#education",
-    label: "Education",
-  },
+  // {
+  //   icon: <FaGraduationCap className="h-5 w-5" />,
+  //   href: "#education",
+  //   label: "Education",
+  // },
   {
     icon: <IoDocumentText className="h-5 w-5" />,
     href: "#resume",
     label: "Resume",
+    parser: "resume"
   },
   {
     icon: <FaListUl className="h-5 w-5" />,
@@ -59,6 +60,7 @@ const navItems: {
     icon: <MdOutlineEmail className="h-5 w-5" />,
     href: "#contact",
     label: "Contact",
+    parser: 'contact'
   },
 ];
 
@@ -67,7 +69,6 @@ const Navbar = () => {
 
   useEffect(() => {
     const sections = document.querySelectorAll<HTMLElement>("section[id]");
-
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((ent) => {
@@ -82,16 +83,11 @@ const Navbar = () => {
         threshold: 0.6,
       }
     );
-
     sections.forEach((e) => observer.observe(e));
     return () => {
       sections.forEach((e) => observer.unobserve(e));
     };
   }, []);
-
-  useEffect(() => {
-    console.log(currentVsLineElem);
-  }, [currentVsLineElem]);
 
   return (
     <>
@@ -109,7 +105,7 @@ const Navbar = () => {
               key={index}
               href={item.href}
               className={`relative mx-auto w-fit flex items-center justify-center px-3 py-3 rounded-full transition-all duration-100 hover:bg-zinc-800 hover:text-white group ${
-                currentVsLineElem == (item.href.replace('#', '')|| item.parser) ? "bg-emerald-600" : ""
+                currentVsLineElem == (item.href.replace('#', '') || item.parser) ? "bg-emerald-600 text-white" : ""
               }`}
             >
               <div className="relative">

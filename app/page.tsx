@@ -4,6 +4,7 @@ import ContactSection from "./ui/components/ContactSection";
 import HeroSect from "./ui/components/HeroSect";
 import ProfileCard from "./ui/components/profileCard";
 import SkillsSection from "./ui/components/SkillCategory ";
+import WorkExperienceSection from "./ui/components/WorkExpSection";
 
 const Page: React.FC = () => {
   return (
@@ -23,6 +24,9 @@ const Page: React.FC = () => {
       </Section>
       <Section className="border glass-gradient border-black h-auto xl:h-[570px] w-full">
         <SkillsSection /> 
+      </Section>
+      <Section className="border glass-gradient border-black h-auto xl:h-[570px] w-full">
+        <WorkExperienceSection /> 
       </Section>
       <Section className="border glass-gradient border-black h-auto xl:h-[570px] w-full">
         <ContactSection /> 
