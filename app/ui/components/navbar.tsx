@@ -21,18 +21,18 @@ const navItems: {
 }[] = [
   {
     icon: <FaHome className="h-5 w-5" />,
-    href: "#",
+    href: "/#",
     label: "Home",
     parser: 'home'
   },
   {
     icon: <IoMdPerson className="h-5 w-5" />,
-    href: "#about",
+    href: "/#about",
     label: "About",
   },
   {
     icon: <MdOutlineWork className="h-5 w-5" />,
-    href: "#skills",
+    href: "/#skills",
     label: "Skills",
   },
   // {
@@ -42,23 +42,23 @@ const navItems: {
   // },
   {
     icon: <IoDocumentText className="h-5 w-5" />,
-    href: "#resume",
+    href: "/#resume",
     label: "Resume",
     parser: "resume"
   },
   {
     icon: <FaListUl className="h-5 w-5" />,
-    href: "#projects",
+    href: "/#projects",
     label: "Projects",
   },
   {
     icon: <FaBlog className="h-5 w-5" />,
-    href: "#blog",
+    href: "/#blog",
     label: "Blog",
   },
   {
     icon: <MdOutlineEmail className="h-5 w-5" />,
-    href: "#contact",
+    href: "/#contact",
     label: "Contact",
     parser: 'contact'
   },
@@ -73,7 +73,7 @@ const Navbar = () => {
       (entries) => {
         entries.forEach((ent) => {
           if (ent.isIntersecting) {
-            console.log(ent.target);
+            // console.log(ent.target);
             setCurrentVsLineElem(ent.target.getAttribute("id"));
           }
         });
@@ -105,7 +105,7 @@ const Navbar = () => {
               key={index}
               href={item.href}
               className={`relative mx-auto w-fit flex items-center justify-center px-3 py-3 rounded-full transition-all duration-100 hover:bg-zinc-800 hover:text-white group ${
-                currentVsLineElem == (item.href.replace('#', '') || item.parser) ? "bg-emerald-600 text-white" : ""
+                currentVsLineElem == (item.parser||item.href.replace('/#', '') ) ? "bg-emerald-600 text-white" : ""
               }`}
             >
               <div className="relative">

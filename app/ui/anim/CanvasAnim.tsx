@@ -33,7 +33,7 @@ interface CanvasAnimationProps {
 }
 
 const CanvasAnimation: React.FC<CanvasAnimationProps> = ({
-  speed = 0.1,
+  speed = 0.03,
   colors = [
     "hsla(0, 0%,25%, 1)",
     "hsla(0,0%,15%, 1)",
@@ -125,7 +125,15 @@ const CanvasAnimation: React.FC<CanvasAnimationProps> = ({
   let w: number, h: number;
   let vel_x: number, vel_y: number;
   let cnt = 0;
-  let ms: MousePosition;
+  // let ms: MousePosition;
+  const ms = useRef<MousePosition >({
+    msX: 0,
+  msY: 0,
+  updms: (n: { x: number; y: number }) => {
+    ms.current.msX = n.x;
+    ms.current.msY = n.y;
+  },
+  })
 
   const rad = Math.PI / 180;
 
@@ -245,8 +253,8 @@ const CanvasAnimation: React.FC<CanvasAnimationProps> = ({
         $.clearRect(0, 0, w, h);
 
         // Update points with normalized mouse interaction
-        const angY = ((ms.msX - vel_x) / w) * 0.05 * speed; // Normalize by width
-        const angX = ((ms.msY - vel_y) / h) * 0.03 * speed; // Normalize by height
+        const angY = ((ms.current.msX - vel_x) / w) * 0.05 * speed; // Normalize by width
+        const angX = ((ms.current.msY - vel_y) / h) * 0.03 * speed; // Normalize by height
         const cosY = Math.cos(angY);
         const sinY = Math.sin(angY);
         const cosX = Math.cos(angX);
@@ -280,12 +288,12 @@ const CanvasAnimation: React.FC<CanvasAnimationProps> = ({
       const canvas = canvasRef.current;
       setCanvasSize(canvas);
 
-      ms = {
+      ms.current = {
         msX: vel_x,
         msY: vel_y,
         updms: (n) => {
-          ms.msX = n.x;
-          ms.msY = n.y;
+          ms.current.msX = n.x;
+          ms.current.msY = n.y;
         },
       };
 
@@ -294,19 +302,18 @@ const CanvasAnimation: React.FC<CanvasAnimationProps> = ({
       animate();
 
       window.addEventListener("resize", handleResize);
-      window.addEventListener("mousemove", (e) =>
-        ms.updms({ x: e.pageX, y: e.pageY })
-      );
+      window.addEventListener("mousemove", (e) =>{
+        ms.current.updms({ x: e.screenX, y: e.screenY })
+      });
       window.addEventListener("touchmove", (e) => {
-        // e.preventDefault();
-        ms.updms({ x: e.touches[0].pageX, y: e.touches[0].pageY });
+        ms.current.updms({ x: e.touches[0].pageX, y: e.touches[0].pageY });
       });
 
       return () => {
         window.removeEventListener("resize", handleResize);
       };
     }
-  }, []);
+  },);
 
   return (
     <>
@@ -317,7 +324,7 @@ const CanvasAnimation: React.FC<CanvasAnimationProps> = ({
         <input type="color" name="color3" id="" />
       </form> */}
       <canvas
-        className="fixed w-screen h-screen"
+        className="fixed w-screen h-screen "
         ref={canvasRef}
         style={{ display: "block", zIndex: "-1" }}
       />

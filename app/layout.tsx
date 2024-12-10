@@ -1,9 +1,7 @@
 import localFont from "next/font/local";
-import "./globals.css";
-import Navbar from "@/app/ui/components/navbar";
-import ProfileCard from "@/app/ui/components/profileCard";
 import { Metadata } from "next";
-import CanvasAnimation from "./ui/anim/CanvasAnim";
+import "./globals.css";
+
 
 export const metadata: Metadata = {
   title: {
@@ -35,16 +33,18 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased `}
       >
-        <CanvasAnimation />
+        {/* <CanvasAnimation />
         <div className="py-8 relative h-svh w-svh container mx-auto">
           <ProfileCard
             className={
               "h-[570px] w-[25%] max-w-[400px] fixed left-10 top-[8%] p-5 glass-gradient hidden lg:block"
             }
-          />
+          /> */}
+
           {children}
-          <Navbar />
-        </div>
+
+          {/* <Navbar />
+        </div> */}
       </body>
     </html>
   );
