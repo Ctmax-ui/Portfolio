@@ -29,7 +29,7 @@ const Page = () => {
               }
             />
           </Section>
-          <Section className="border glass-gradient border-black  h-auto lg:h-[570px] w-full ">
+          <Section className="border glass-gradient border-black h-auto lg:h-[570px] w-full ">
             <HeroSect />
           </Section>
           <Section className="border glass-gradient border-black h-auto lg:h-[570px] w-full ">

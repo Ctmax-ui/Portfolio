@@ -33,18 +33,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased `}
       >
-        {/* <CanvasAnimation />
-        <div className="py-8 relative h-svh w-svh container mx-auto">
-          <ProfileCard
-            className={
-              "h-[570px] w-[25%] max-w-[400px] fixed left-10 top-[8%] p-5 glass-gradient hidden lg:block"
-            }
-          /> */}
-
           {children}
-
-          {/* <Navbar />
-        </div> */}
       </body>
     </html>
   );
