@@ -7,13 +7,11 @@ import { IoCheckmarkDoneSharp } from "react-icons/io5";
 export default function HeroSect() {
   return (
     <section className="relative px-4 py-5 overflow-hidden" id='home'>
-      {/* Background triangle decoration */}
       <div className="absolute right-0 top-0 transform translate-x-1/3 -translate-y-1/3">
         <div className="w-full h-full border-2 border-zinc-800 transform rotate-45" />
       </div>
 
       <div className="max-w-7xl mx-auto">
-        {/* Introduce label */}
         <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-900/50 backdrop-blur-sm lg:mb-4">
           <p className="w-4 h-4 text-emerald-500"><FaUserGraduate /></p>
           <span className="text-sm font-medium text-zinc-100">INTORODUCTION</span>

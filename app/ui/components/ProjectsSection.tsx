@@ -3,14 +3,13 @@ import Link from "next/link";
 import { MdOutlineWork } from "react-icons/md";
 import { FaArrowRightLong } from "react-icons/fa6";
 
-
 export interface projectTypes {
   id: string;
   title: string;
   category: string;
   image: string;
   link: string;
-  liveDemoUrl?:string;
+  liveDemoUrl?: string;
 }
 
 const ProjectsSection = () => {
@@ -21,7 +20,7 @@ const ProjectsSection = () => {
       category: "Authentication  & Authorization",
       image: "/extra/advance-user-auth.png",
       link: "#",
-      liveDemoUrl: ''
+      liveDemoUrl: "",
     },
     {
       id: "2",
@@ -47,11 +46,17 @@ const ProjectsSection = () => {
           <span className="text-sm font-medium text-zinc-200">PORTFOLIO</span>
         </div>
         <div className="flex justify-between items-center mb-6">
-        <h2 className="text-4xl md:text-5xl font-bold text-white ">
-          Latest <span className="text-emerald-500">Projects</span>
-        </h2>
-        <Link href={'/projects'} className="py-3 px-5 bg-emerald-500 font-bold text-white flex justify-between items-center gap-2">More Projects <FaArrowRightLong /></Link>
+          <h2 className="text-4xl md:text-5xl font-bold text-white ">
+            Latest <span className="text-emerald-500">Projects</span>
+          </h2>
+          <Link
+            href={"/projects"}
+            className="py-3 px-5 bg-emerald-500 font-bold text-white flex justify-between items-center gap-2"
+          >
+            More Projects <FaArrowRightLong />
+          </Link>
         </div>
+        
         <div className="space-y-8">
           <Link href={projects[0].link} className="block group">
             <div className="relative overflow-hidden rounded-2xl border border-zinc-800">

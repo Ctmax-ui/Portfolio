@@ -1,40 +1,48 @@
 import { FaGlobe } from "react-icons/fa";
-import Image from 'next/image'
-import Link from 'next/link'
-import { formatDate } from '@/lib/utils'
+import Image from "next/image";
+import Link from "next/link";
+import { formatDate } from "@/lib/utils";
+import { FaArrowRightLong } from "react-icons/fa6";
 
 export interface BlogPost {
-    id:string,title:string,excerpt:string,date:string,image:string,slug:string
+  id: string;
+  title: string;
+  excerpt: string;
+  date: string;
+  image: string;
+  slug: string;
 }
-
 
 export default function BlogSection() {
   const posts: BlogPost[] = [
     {
-      id: '1',
-      title: 'Elevate your mornings with perfectly brewed coffee',
-      excerpt: 'I design products that are more than pretty. I make them shippable and usable.',
-      date: '2024-05-15',
-      image: '/placeholder.svg?height=200&width=300',
-      slug: 'perfectly-brewed-coffee'
+      id: "1",
+      title: "Elevate your mornings with perfectly brewed coffee",
+      excerpt:
+        "I design products that are more than pretty. I make them shippable and usable.",
+      date: "2024-05-15",
+      image: "/placeholder.svg?height=200&width=300",
+      slug: "perfectly-brewed-coffee",
     },
     {
-      id: '2',
-      title: 'Mastering the clock: A guide to time management',
-      excerpt: 'I design products that are more than pretty. I make them shippable and usable.',
-      date: '2024-05-10',
-      image: '/placeholder.svg?height=200&width=300',
-      slug: 'time-management-guide'
+      id: "2",
+      title: "Mastering the clock: A guide to time management",
+      excerpt:
+        "I design products that are more than pretty. I make them shippable and usable.",
+      date: "2024-05-10",
+      image: "/placeholder.svg?height=200&width=300",
+      slug: "time-management-guide",
     },
     {
-      id: '3',
-      title: 'Homeward bound: Crafting a productive home office',
-      excerpt: 'I design products that are more than pretty. I make them shippable and usable.',
-      date: '2024-05-05',
-      image: '/placeholder.svg?height=200&width=300',
-      slug: 'productive-home-office'
-    }
-  ]
+      id: "3",
+      title: "Homeward bound: Crafting a productive home office",
+      excerpt:
+        "I design products that are more than pretty. I make them shippable and usable.",
+      date: "2024-05-05",
+      image: "/placeholder.svg?height=200&width=300",
+      slug: "productive-home-office",
+    },
+  ];
 
   return (
     <section className="px-5 py-5" id="blog">
@@ -43,10 +51,17 @@ export default function BlogSection() {
           <FaGlobe className="w-4 h-4 text-emerald-500" />
           <span className="text-sm font-medium text-zinc-200">BLOG</span>
         </div>
-        <h2 className="text-4xl md:text-5xl font-bold text-white mb-5">
-          Latest <span className="text-emerald-500">Insights</span>
-        </h2>
-
+        <div className="flex justify-between items-center mb-8">
+          <h2 className="text-4xl md:text-5xl font-bold text-white ">
+            Latest <span className="text-emerald-500">Insights</span>
+          </h2>
+          <Link
+            href={"/blogs"}
+            className="py-3 px-5 bg-emerald-500 font-bold text-white flex justify-between items-center gap-2"
+          >
+            More Blogs <FaArrowRightLong />
+          </Link>
+        </div>
         <div className="space-y-6">
           {posts.map((post) => (
             <Link
@@ -73,9 +88,7 @@ export default function BlogSection() {
                       {post.title}
                     </h3>
                     <p className="text-slate-200 mb-4">{post.excerpt}</p>
-                    <button
-                      className="text-white border w-fit px-3 py-2 h-auto font-semibold hover:text-emerald-400 hover:no-underline"
-                    >
+                    <button className="text-white border w-fit px-3 py-2 h-auto font-semibold hover:text-emerald-400 hover:no-underline">
                       Read More...
                     </button>
                   </div>
@@ -87,14 +100,13 @@ export default function BlogSection() {
 
         <div className="mt-8 text-center">
           <Link
-          href={'/blogs'}
-            className=" text-slate-900 hover:bg-emerald-500 hover:text-white px-4 py-2 outline outline-emerald-500 hover:outline-emerald-500 transition-all"
+            href={"/blogs"}
+            className=" text-slate-900 hover:bg-emerald-500 hover:text-white px-4 py-2 outline border-2 border-emerald-500 hover:border-emerald-500 transition-all outline-none font-semibold"
           >
             More Post
           </Link>
         </div>
       </div>
     </section>
-  )
+  );
 }
-
