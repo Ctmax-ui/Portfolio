@@ -19,3 +19,18 @@ background-color: rgba(214, 219, 228, 0.51);
 border-radius: 12px;
 border: 1px solid rgba(15, 15, 15, 0.542);
 }
+
+.shake-animation{
+animation: shakelem .2s ;
+animation-direction: normal;
+animation-iteration-count: unset;
+}
+@keyframes shakelem {
+    0%,20%,40%,60%,80%,100%{
+        transform: translateX(0px);
+    }
+    10%,30%,50%,70%,90%{
+        transform: translateX(10px);
+    }
+
+  }
