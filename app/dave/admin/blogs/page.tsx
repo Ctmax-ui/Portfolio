@@ -3,6 +3,7 @@ import React, { useState } from "react";
 
 const Page = () => {
   const [title, setTitle] = useState("");
+  const [imageUrl, setImageUrl] = useState("");
   const [description, setDescription] = useState("");
   const [loading, setLoading] = useState(false);
   const [successMessage, setSuccessMessage] = useState("");
@@ -20,6 +21,7 @@ const Page = () => {
         body: JSON.stringify({
           title,
           description,
+          imageUrl
         }),
       });
 
@@ -39,6 +41,8 @@ const Page = () => {
       setLoading(false);
     }
   };
+
+  
 
   return (
     <div className="w-full mx-auto px-5 pt-3">
@@ -60,6 +64,17 @@ const Page = () => {
           />
         </div>
         <div className="">
+          <label htmlFor="imageUrl">Blog Image Url:</label>
+          <input
+            type="text"
+            id="imageUrl"
+            value={imageUrl}
+            onChange={(e) => setImageUrl(e.target.value)}
+            required
+            className="px-5 py-4 w-full border border-slate-800 rounded-sm"
+          />
+        </div>
+        <div className="">
           <label htmlFor="textBody">Blog Content:</label>
           <textarea
             id="textBody"
@@ -67,7 +82,7 @@ const Page = () => {
             onChange={(e) => setDescription(e.target.value)}
             required
             rows={10}
-            className="border px-5 py-4 border-slate-700 w-full min-h-[10vh] max-h-[30vh] rounded-sm "
+            className="border px-5 py-4 border-slate-700 w-full min-h-[10vh] h-[18vh] max-h-[30vh] rounded-sm "
             style={{ scrollbarWidth: "thin" }}
           />
         </div>
@@ -83,7 +98,7 @@ const Page = () => {
           </select>
         </div>
         <button
-          type="submit"
+          type="submit" 
           disabled={loading}
           className="border rounded-sm py-2 border-blue-500 text-black transition-all hover:bg-blue-500 hover:text-white"
         >

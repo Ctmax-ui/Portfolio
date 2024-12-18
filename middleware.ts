@@ -3,18 +3,25 @@ import { getToken } from "next-auth/jwt";
 import type { NextRequest } from "next/server";
 
 export async function middleware(req: NextRequest) {
-  const token = await getToken({ req, secret: process.env.NEXTAUTH_SECRET });
 
+  const response = NextResponse.next();
+  response.headers.set("Access-Control-Allow-Origin", "http://localhost:3000");
+  response.headers.set("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+  response.headers.set("Access-Control-Allow-Headers", "Content-Type, Authorization");
+
+  if (req.method === "OPTIONS") {
+    return new Response(null, { status: 204, headers: response.headers });
+  }
+
+  const token = await getToken({ req, secret: process.env.NEXTAUTH_SECRET });
   const { pathname } = req.nextUrl;
 
-  // Redirect unauthenticated users trying to access the admin route
   if (pathname.startsWith("/dave/admin") && !token) {
     return NextResponse.redirect(new URL("/login", req.url));
   }
 
   return NextResponse.next();
 }
-
 export const config = {
   matcher: ["/dave/admin/:path*"],
 };

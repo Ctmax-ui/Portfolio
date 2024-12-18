@@ -27,13 +27,14 @@ export async function GET(req: Request) {
 
 export async function POST(req: Request) {
   try {
-    const { title, description } = await req.json();
+    const { title, description,imageUrl } = await req.json();
 
     const resData =
-      await sql`INSERT INTO blogs (blog_title,blog_body,created_at,updated_at) 
+      await sql`INSERT INTO blogs (blog_title,blog_body,blog_image,created_at,updated_at) 
     VALUES (${title.trim()}, ${JSON.stringify({
         description: description,
       })}::jsonb, 
+      ${imageUrl},
       NOW(), 
       NOW())
     ON CONFLICT (id) DO NOTHING`;

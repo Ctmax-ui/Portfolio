@@ -7,8 +7,8 @@ import { FaSearch } from "react-icons/fa";
 export interface blogsType {
   id: number;
   title: string;
+  blogImage:string;
   description: string;
-  image: string;
   date: string;
 }
 
@@ -21,23 +21,23 @@ const Page = () => {
 
   const getData = async () => {
     try {
-      const response = await fetch("https://jsonplaceholder.org/posts", {
+      const response = await fetch("/api/blogs", {
         method: "GET",
       });
       const data = await response.json();
-      const parsedData = await data.map(
+      const parsedData = await data.data.map(
         (item: {
+          blog_body: { description: string };
           id: string;
-          content: string;
-          title: string;
-          image: string;
-          updatedAt: string;
+          blog_image: string;
+          blog_title: string;
+          updated_at: string;
         }) => ({
           id: item?.id || "N/A",
-          description: item?.content || "No description",
-          title: item?.title || "Untitled",
-          image: item?.image || "No image",
-          date: item?.updatedAt || "No date",
+          title: item?.blog_title || "Untitled",
+          blogImage: item?.blog_image || 'unknown',
+          description: item?.blog_body?.description || "No description",
+          date: item?.updated_at || "No date",
         })
       );
       console.log(parsedData);
@@ -69,7 +69,7 @@ const Page = () => {
           >
             <input
               type="search"
-              placeholder="Search posts..."
+              placeholder="Search Blogs..."
               id="searchBlog"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}

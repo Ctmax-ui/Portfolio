@@ -10,14 +10,14 @@ export const authOptions: NextAuthOptions = {
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials) {
-        const adminUsername = "admin";
-        const adminPassword = "password123";
+        const adminUsername = process.env.ADMIN_DASHBOARD_USERNAME || "admin";
+        const adminPassword = process.env.ADMIN_DASHBOARD_PASSWORD || "password123";
 
         if (
           credentials?.username === adminUsername &&
           credentials?.password === adminPassword
         ) {
-          return { id: "1", name: "Admin", email: "admin@example.com" };
+          return { id: "1", name: adminUsername, email: "admin@example.com" };
         }
         return null; // Fail authentication
       },
