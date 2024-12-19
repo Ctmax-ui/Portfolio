@@ -112,6 +112,15 @@ const ProjectsSection = () => {
             ))}
           </div>
         </div>
+
+        <div className="mt-8 mb-3 text-center">
+          <Link
+            href={"/projects"}
+            className=" text-emerald-500 hover:bg-emerald-500 hover:text-white px-8 py-2 outline border-2 border-emerald-500 hover:border-emerald-500 transition-all outline-none font-semibold "
+          >
+            More Projects
+          </Link>
+        </div>
       </div>
     </section>
   );

@@ -102,7 +102,7 @@ const ProfileCard = ({ className }: { className?: string }) => {
               <Button
                 sx={{ px: 3, py: 1.2, mt: 4 }}
                 variant="outlined"
-                color="info"
+                color="inherit"
                 className="text-nowrap"
                 size="large"
               >

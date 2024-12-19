@@ -1,9 +1,4 @@
-import {
-  Card,
-  CardActions,
-  CardContent,
-  Typography
-} from "@mui/material";
+import { Card, CardContent, CardFooter } from "@/components/ui/card"
 import Image from "next/image";
 
 type ProjectCardProps = {
@@ -17,7 +12,10 @@ type ProjectCardProps = {
   };
 };
 
-export default function ProjectCard({ project }: ProjectCardProps) {
+export default async function ProjectCard({ project }: ProjectCardProps) {
+
+  await new Promise(resolve=>setInterval(resolve,3000))
+
   return (
     <Card className="overflow-hidden flex flex-col justify-between">
       <div className="relative h-48 border-b p-2">
@@ -29,29 +27,26 @@ export default function ProjectCard({ project }: ProjectCardProps) {
         />
       </div>
       <CardContent className="p-6">
-        <Typography
-          gutterBottom
-          variant="h5"
-          component="div"
-          className="text-2xl font-bold mb-2 text-emerald-500"
+        <div
+          className="text-2xl font-bold mb-2 text-blue-500"
         >
           {project.title}
-        </Typography>
-        <Typography variant="body2" className="text-gray-600 mb-4">
+        </div>
+        <div  className="text-gray-600 mb-4">
           {project.description}
-        </Typography>
+        </div>
         <div className="flex flex-wrap gap-2 my-4">
           {project.tags.map((tag) => (
             <div key={tag} className="border border-black px-2 rounded-full font-semibold ">{tag}</div>
           ))}
         </div>
       </CardContent>
-      <CardActions className="p-6 flex justify-between ">
-        <button className="w-full border-2 border-emerald-500 py-2 hover:bg-emerald-500 hover:text-white font-semibold">
+      <CardFooter className="p-6 flex justify-between gap-4">
+        <button className="w-full border-2 border-blue-500 py-2 hover:bg-blue-500 hover:text-white font-semibold">
           View Project
         </button>
-        <button className="w-full border-2 border-emerald-500 py-2 hover:bg-emerald-500 hover:text-white font-semibold">View Code</button>
-      </CardActions>
+        <button className="w-full border-2 border-blue-500 py-2 hover:bg-blue-500 hover:text-white font-semibold">View Code</button>
+      </CardFooter>
     </Card>
   );
 }

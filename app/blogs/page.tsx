@@ -1,149 +1,36 @@
-"use client";
-import { useState, useEffect } from "react";
-import BlogCard from "@/app/ui/components/BlogCard";
-import { FaChevronRight, FaChevronLeft } from "react-icons/fa";
-import { FaSearch } from "react-icons/fa";
+import { Suspense } from "react";
+import BlogSkeletonCard from "./BlogCardSkeleton";
+import Blogs from "./Blogs";
+import Link from "next/link";
+import { LuArrowBigLeftDash } from "react-icons/lu";
 
-export interface blogsType {
-  id: number;
-  title: string;
-  blogImage:string;
-  description: string;
-  date: string;
-}
-
-const Page = () => {
-  const [blogs, setBlogs] = useState<blogsType[]>([]);
-  const [searchQuery, setSearchQuery] = useState<string>("");
-  const [currentPage, setCurrentPage] = useState<number>(1);
-  const itemsPerPage: number = 8;
-  const totalPages: number = 100;
-
-  const getData = async () => {
-    try {
-      const response = await fetch("/api/blogs", {
-        method: "GET",
-      });
-      const data = await response.json();
-      const parsedData = await data.data.map(
-        (item: {
-          blog_body: { description: string };
-          id: string;
-          blog_image: string;
-          blog_title: string;
-          updated_at: string;
-        }) => ({
-          id: item?.id || "N/A",
-          title: item?.blog_title || "Untitled",
-          blogImage: item?.blog_image || 'unknown',
-          description: item?.blog_body?.description || "No description",
-          date: item?.updated_at || "No date",
-        })
-      );
-      console.log(parsedData);
-
-      setBlogs(parsedData);
-    } catch {}
-  };
-
-  const handlePageChange = (props: number) => {
-    setCurrentPage(props);
-    // window.scrollTo({ top: 0, behavior: "smooth" });
-  };
-
-  useEffect(() => {
-    getData();
-  }, []);
-
+export default function Page() {
   return (
     <>
-      <div className="min-h-screen py-5 px-4 sm:px-6 lg:px-8">
-        <h1 className="text-4xl font-bold text-center mb-12">
-          Latest Blog Posts
-        </h1>
-
-        <div className="flex justify-between items-center mb-10">
-          <label
-            className="relative border border-slate-500 rounded-md py-3 px-4 cursor-text"
-            htmlFor="searchBlog"
+      <div className="min-h-screen font-sans ">
+        <header className="flex items-center justify-center bg-emerald-500 p-4 shadow-lg relative">
+          <Link
+            href={"/"}
+            className="text-white text-lg hover:text-slate-300 transition duration-300 absolute left-10 border px-4 py-1 rounded-sm flex justify-center items-center gap-3"
           >
-            <input
-              type="search"
-              placeholder="Search Blogs..."
-              id="searchBlog"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="pl-7 outline-none"
-            />
-            <FaSearch className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
-          </label>
-
-          <div className="flex items-center">
-            <div className="flex items-center gap-2 text-black">
-              <button
-                onClick={() => handlePageChange(currentPage - 1)}
-                disabled={currentPage === 1}
-                className="border p-4 disabled:text-slate-500 hover:bg-slate-900 hover:text-white transition-all border-slate-600 rounded-md"
-              >
-                <FaChevronLeft className="h-4 w-4" />
-              </button>
-              <span className="text-md">
-                Page {currentPage} of {totalPages}
-              </span>
-              <button
-                onClick={() => handlePageChange(currentPage + 1)}
-                disabled={currentPage === totalPages}
-                className="border p-4 disabled:text-slate-500 hover:bg-slate-900 hover:text-white transition-all border-slate-600 rounded-md"
-              >
-                <FaChevronRight className="h-4 w-4" />
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-5 ">
-          {blogs &&
-            blogs
-              .slice(0, itemsPerPage)
-              ?.map((blog) => <BlogCard key={blog.id} blog={blog} />)}
-        </div>
-
-        <div className="flex justify-center mt-20">
-          <div className="flex items-center gap-2 ">
-            <button
-              onClick={() => handlePageChange(currentPage - 1)}
-              disabled={currentPage === 1}
-              className="border-slate-500 rounded-md text-slate-800 hover:bg-slate-900 hover:text-white transition-all p-4 border mr-2"
-            >
-              <FaChevronLeft className="h-4 w-4" />
-            </button>
-            {Array.from({ length: totalPages }, (_, i) => i + 1)
-              .slice((currentPage < 5 ? 0 : currentPage - 5), (currentPage < 5? 9 :currentPage+4))
-              .map((page) => (
-                <button
-                  key={page}
-                  onClick={() => handlePageChange(page)}
-                  className={`${
-                    currentPage === page
-                      ? "bg-emerald-500 text-white hover:bg-emerald-600 border-emerald-500 transition-all"
-                      : "border-slate-500 text-slate-900 hover:bg-emerald-50 "
-                  }  border rounded-md px-2 py-1`}
-                >
-                  {(`${page}`.length<2?0:'')}{page}
-                </button>
-              ))}
-            <button
-              onClick={() => handlePageChange(currentPage + 1)}
-              disabled={currentPage === totalPages}
-              className="border-slate-500 rounded-md text-slate-800 hover:bg-slate-900 hover:text-white transition-all p-4 border ml-2"
-            >
-              <FaChevronRight className="h-4 w-4" />
-            </button>
-          </div>
+            <LuArrowBigLeftDash className="text-xl" /> Go Home
+          </Link>
+          <h1 className="text-white text-2xl font-bold ">Latest Blogs</h1>
+        </header>
+        <div className="py-5 px-4 sm:px-6 lg:px-8">
+          <Suspense
+            fallback={
+              <div className="grid h-full grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-5 ">
+                <BlogSkeletonCard />
+                <BlogSkeletonCard />
+                <BlogSkeletonCard />
+              </div>
+            }
+          >
+            <Blogs />
+          </Suspense>
         </div>
       </div>
     </>
   );
-};
-
-export default Page;
+}

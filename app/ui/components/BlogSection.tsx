@@ -98,12 +98,12 @@ export default function BlogSection() {
           ))}
         </div>
 
-        <div className="mt-8 text-center">
+        <div className="mt-8 mb-4 text-center">
           <Link
             href={"/blogs"}
-            className=" text-slate-900 hover:bg-emerald-500 hover:text-white px-4 py-2 outline border-2 border-emerald-500 hover:border-emerald-500 transition-all outline-none font-semibold"
+            className=" text-emerald-500 hover:bg-emerald-500 hover:text-white px-8 py-2 outline border-2 border-emerald-500 hover:border-emerald-500 transition-all outline-none font-semibold "
           >
-            More Post
+            More Posts
           </Link>
         </div>
       </div>

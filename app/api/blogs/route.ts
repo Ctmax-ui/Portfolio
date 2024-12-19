@@ -1,33 +1,77 @@
 "use server";
-
 import { sql } from "@vercel/postgres";
 
 export async function GET(req: Request) {
   try {
     const { searchParams } = new URL(req.url);
-    const pageNoReq: number | null = Number(searchParams.get("page"));
-    let pageOffset = 0;
-    if (pageNoReq) {
-      pageOffset = pageNoReq * 10;
+    const query = searchParams.get("query")?.trim() || null;
+    const pageNoReq = parseInt(searchParams.get("page") || "1", 10);
+
+    if (isNaN(pageNoReq) || pageNoReq < 1) {
+      return new Response(
+        JSON.stringify({ message: "Invalid page number" }),
+        { status: 400 }
+      );
     }
-    const data = await sql`
-        SELECT * FROM blogs ORDER BY updated_at DESC LIMIT 10 OFFSET ${pageOffset}
-        `;
 
-    // console.log(data);
+    if (query && query.length > 100) {
+      return new Response(
+        JSON.stringify({ message: "Query too long" }),
+        { status: 400 }
+      );
+    }
 
-    return Response.json(
-      { message: "success", data: data.rows },
-      { status: 200 }
+    const pageLimit = 10;
+    const pageOffset = (pageNoReq - 1) * pageLimit;
+
+    let data;
+    let totalBlogs;
+
+    if (query) {
+      data = await sql`
+        SELECT * 
+        FROM blogs 
+        WHERE blog_title ILIKE ${"%" + query + "%"} 
+        ORDER BY updated_at DESC 
+        LIMIT ${pageLimit} 
+        OFFSET ${pageOffset}
+      `;
+      totalBlogs = await sql`
+        SELECT COUNT(*) FROM blogs 
+        WHERE blog_title ILIKE ${"%" + query + "%"}
+      `;
+    } else {
+      data = await sql`
+        SELECT * 
+        FROM blogs 
+        ORDER BY updated_at DESC 
+        LIMIT ${pageLimit} 
+        OFFSET ${pageOffset}
+      `;
+      totalBlogs = await sql`SELECT COUNT(*) FROM blogs`;
+    }
+
+    return new Response(
+      JSON.stringify({
+        message: "success",
+        data: data.rows,
+        totalPages: Math.ceil(totalBlogs?.rows[0]?.count / pageLimit),
+        currentPage: pageNoReq,
+      }),
+      { status: 200, headers: { "Content-Type": "application/json" } }
     );
-  } catch (error) {
-    return Response.json({ message: error }, { status: 500 });
+  } catch (err) {
+    console.error(err);
+    return new Response(
+      JSON.stringify({ message: "Internal server error" }),
+      { status: 500, headers: { "Content-Type": "application/json" } }
+    );
   }
 }
 
 export async function POST(req: Request) {
   try {
-    const { title, description,imageUrl } = await req.json();
+    const { title, description, imageUrl } = await req.json();
 
     const resData =
       await sql`INSERT INTO blogs (blog_title,blog_body,blog_image,created_at,updated_at) 
