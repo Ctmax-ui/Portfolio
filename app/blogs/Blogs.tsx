@@ -49,7 +49,6 @@ export default function Blogs() {
   const [fetchQuery, setFetchQuery] = useState<string>(paramQuery || "");
   const router = useRouter();
 
-  console.log(window.location.origin);
 
   useEffect(() => {
     const paramQuery = params.get("query");
@@ -70,7 +69,7 @@ export default function Blogs() {
       setIsLoading(true);
       //   await new Promise(r=>setTimeout(r,40000))
       const fetchedBlogs = await getBlogs(pageNo, fetchQuery);
-      console.log(fetchedBlogs);
+      // console.log(fetchedBlogs);
       setBlogs(fetchedBlogs);
       setCurrentPage(fetchedBlogs.currentPage);
       setTotalPages(fetchedBlogs.totalPages);
