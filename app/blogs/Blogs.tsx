@@ -24,7 +24,7 @@ async function getBlogs(
   inputQuery?: string
 ): Promise<blogsType> {
   const response = await fetch(
-    `http://localhost:3000/api/blogs?page=${pageNo}&query=${inputQuery}`,
+    `${window.location.origin || 'http://localhost:3000'}/api/blogs?page=${pageNo}&query=${inputQuery}`,
     {
       method: "GET",
       next: { revalidate: 60 },
@@ -48,6 +48,8 @@ export default function Blogs() {
   const [inputQuery, setInputQuery] = useState<string>("");
   const [fetchQuery, setFetchQuery] = useState<string>(paramQuery || "");
   const router = useRouter();
+
+  console.log(window.location.origin);
 
   useEffect(() => {
     const paramQuery = params.get("query");
