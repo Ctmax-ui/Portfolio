@@ -1,6 +1,5 @@
 "use client";
 import Link from "next/link";
-import { TiThMenuOutline } from "react-icons/ti";
 import { FaHome } from "react-icons/fa";
 import { IoMdPerson } from "react-icons/io";
 import { MdOutlineWork } from "react-icons/md";
@@ -12,18 +11,19 @@ import { FaBlog } from "react-icons/fa";
 import { BsFillSunFill } from "react-icons/bs";
 import { MdModeNight } from "react-icons/md";
 import { useEffect, useState } from "react";
+import SlidingNav from "./SlidingNav";
 
 const navItems: {
   icon: React.ReactNode;
   href: string;
   label: string;
-  parser?:string;
+  parser?: string;
 }[] = [
   {
     icon: <FaHome className="h-5 w-5" />,
     href: "/#",
     label: "Home",
-    parser: 'home'
+    parser: "home",
   },
   {
     icon: <IoMdPerson className="h-5 w-5" />,
@@ -44,7 +44,7 @@ const navItems: {
     icon: <IoDocumentText className="h-5 w-5" />,
     href: "/#resume",
     label: "Resume",
-    parser: "resume"
+    parser: "resume",
   },
   {
     icon: <FaListUl className="h-5 w-5" />,
@@ -60,7 +60,7 @@ const navItems: {
     icon: <MdOutlineEmail className="h-5 w-5" />,
     href: "/#contact",
     label: "Contact",
-    parser: 'contact'
+    parser: "contact",
   },
 ];
 
@@ -89,9 +89,10 @@ const Navbar = () => {
     };
   }, []);
 
+
   return (
     <>
-      <nav className="border glass-gradient h-[570px] w-[60px] fixed right-5 top-[8%] hidden lg:block rounded-full">
+      <nav className="border glass-gradient h-[570px] w-[60px] fixed right-5 top-[8%] hidden lg:inline-block rounded-full">
         <div className="my-4 mx-auto flex justify-center items-center">
           <button className="bg-emerald-500 rounded-full px-3 py-3 w-fit transition-transform hover:scale-110">
             <BsFillSunFill className="h-5 w-5 text-white hidden" />
@@ -105,7 +106,10 @@ const Navbar = () => {
               key={index}
               href={item.href}
               className={`relative mx-auto w-fit flex items-center justify-center px-3 py-3 rounded-full transition-all duration-100 hover:bg-zinc-800 hover:text-white group ${
-                currentVsLineElem == (item.parser||item.href.replace('/#', '') ) ? "bg-emerald-600 text-white" : ""
+                currentVsLineElem ==
+                (item.parser || item.href.replace("/#", ""))
+                  ? "bg-emerald-600 text-white"
+                  : ""
               }`}
             >
               <div className="relative">
@@ -118,11 +122,8 @@ const Navbar = () => {
           ))}
         </div>
       </nav>
-      <nav className="block lg:hidden">
-        <button className="h-[40px] w-[40px] fixed top-5 right-5 flex justify-center items-center border glass-gradient rounded-sm ">
-          <TiThMenuOutline />
-        </button>
-      </nav>
+
+    <SlidingNav navItems={navItems} currentVsLineElem={currentVsLineElem} />
     </>
   );
 };

@@ -4,10 +4,11 @@ import Link from 'next/link'
 
 interface BlogPost {
   id: number;
-  title: string;
-  blogImage:string;
-  description: string;
-  date: string;
+  blog_title: string;
+  blog_image:string;
+  blog_body: {description:string};
+  created_at: string;
+  updated_at: string;
 }
 
 interface BlogCardProps {
@@ -15,24 +16,24 @@ interface BlogCardProps {
 }
 
 export default function BlogCard({ blog }: BlogCardProps) {
-  const parsedDate = new Date(blog.date).toLocaleString()
+  const parsedDate = new Date(blog.updated_at).toLocaleString()
 
   return (
     <Card className="overflow-hidden shadow-lg transition-transform duration-300 hover:scale-[1.02] h-[460px] flex flex-col">
       <div className="relative h-52 w-full">
         <Image
-          src={`/api/imageproxy?url=${encodeURIComponent(blog.blogImage)}`}
-          alt={blog.title}
+          src={`/api/imageproxy?url=${encodeURIComponent(blog.blog_image)}`}
+          alt={blog.blog_title}
           fill
           className=" w-full object-cover border-b"
         />
       </div>
       <CardContent className="flex-grow p-4 flex flex-col">
         <h2 className="text-xl font-bold text-slate-800 mb-2 truncate">
-          {blog.title}
+          {blog.blog_title}
         </h2>
         <p className="text-slate-600 mb-4 text-md line-clamp-3">
-          {blog.description}
+          {blog.blog_body.description}
         </p>
         <span className="text-sm text-slate-500 mt-auto">{parsedDate}</span>
       </CardContent>
