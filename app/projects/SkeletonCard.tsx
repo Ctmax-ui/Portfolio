@@ -1,33 +1,24 @@
 import { Card, CardContent, CardFooter } from "@/components/ui/card"
-import { Skeleton } from "@/components/ui/skeleton"
 
 
 export default function SkeletonCard() {
   return (
-    <Card className="overflow-hidden flex flex-col">
-      <Skeleton className="w-full h-48" />
-      
-      <CardContent className="p-6 space-y-4">
-        <Skeleton className="h-8 w-3/4" />
-        
-        <div className="space-y-2">
-          <Skeleton className="h-4 w-full" />
-          <Skeleton className="h-4 w-5/6" />
-        </div>
-        
+    <Card className="overflow-hidden border-none bg-gradient-to-br from-white to-gray-50/50 shadow-xl dark:from-gray-950 dark:to-gray-900/50">
+      <div className="h-56 bg-gray-200 dark:bg-gray-700 animate-pulse" />
+      <CardContent className="p-6">
+        <div className="h-7 w-3/4 bg-gray-200 dark:bg-gray-700 animate-pulse mb-2" />
+        <div className="h-4 bg-gray-200 dark:bg-gray-700 animate-pulse mb-1" />
+        <div className="h-4 bg-gray-200 dark:bg-gray-700 animate-pulse mb-1" />
+        <div className="h-4 w-2/3 bg-gray-200 dark:bg-gray-700 animate-pulse mb-6" />
         <div className="flex flex-wrap gap-2">
-          <Skeleton className="h-6 w-16" />
-          <Skeleton className="h-6 w-16" />
-          <Skeleton className="h-6 w-16" />
-          <Skeleton className="h-6 w-16" />
+          {[1, 2, 3].map((i) => (
+            <div key={i} className="h-6 w-16 bg-gray-200 dark:bg-gray-700 animate-pulse rounded-full" />
+          ))}
         </div>
       </CardContent>
-      
-      <CardFooter className="p-6 flex gap-4 mt-auto">
-      <button className="w-full border-2 border-blue-500 py-2 hover:bg-blue-500 hover:text-white font-semibold">
-          View Project
-        </button>
-        <button className="w-full border-2 border-blue-500 py-2 hover:bg-blue-500 hover:text-white font-semibold">View Code</button>
+      <CardFooter className="grid grid-cols-2 gap-4 p-6 pt-0">
+        <div className="h-10 bg-gray-200 dark:bg-gray-700 animate-pulse rounded-md" />
+        <div className="h-10 bg-gray-200 dark:bg-gray-700 animate-pulse rounded-md" />
       </CardFooter>
     </Card>
   )
