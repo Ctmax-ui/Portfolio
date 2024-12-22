@@ -89,12 +89,18 @@ const Navbar = () => {
     };
   }, []);
 
+  const handleThemeChange = () => {
+
+  };
 
   return (
     <>
       <nav className="border glass-gradient h-[570px] w-[60px] fixed right-5 top-[8%] hidden lg:inline-block rounded-full">
         <div className="my-4 mx-auto flex justify-center items-center">
-          <button className="bg-emerald-500 rounded-full px-3 py-3 w-fit transition-transform hover:scale-110">
+          <button
+            onClick={handleThemeChange}
+            className="bg-emerald-500 rounded-full px-3 py-3 w-fit transition-all hover:scale-110"
+          >
             <BsFillSunFill className="h-5 w-5 text-white hidden" />
             <MdModeNight className="h-5 w-5 text-zinc-900  " />
           </button>
@@ -105,7 +111,7 @@ const Navbar = () => {
             <Link
               key={index}
               href={item.href}
-              className={`relative mx-auto w-fit flex items-center justify-center px-3 py-3 rounded-full transition-all duration-100 hover:bg-zinc-800 hover:text-white group ${
+              className={`relative mx-auto w-fit flex items-center justify-center px-3 py-3 rounded-full transition-all duration-100 hover:bg-zinc-800 hover:text-white hover:scale-105 group ${
                 currentVsLineElem ==
                 (item.parser || item.href.replace("/#", ""))
                   ? "bg-emerald-600 text-white"
@@ -123,7 +129,7 @@ const Navbar = () => {
         </div>
       </nav>
 
-    <SlidingNav navItems={navItems} currentVsLineElem={currentVsLineElem} />
+      <SlidingNav navItems={navItems} currentVsLineElem={currentVsLineElem} />
     </>
   );
 };

@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import ProjectCard from "../ui/components/ProjectCard";
-import { LuArrowBigLeftDash } from "react-icons/lu";
+import { TiHome } from "react-icons/ti";
 import SkeletonCard from "./SkeletonCard";
 import {useEffect, useState } from "react";
 
@@ -37,15 +37,27 @@ const Page = () => {
 
   return (
     <>
-      <header className="flex items-center justify-center bg-blue-500 p-4 shadow-lg relative">
-        <Link
-          href={"/"}
-          className="text-white text-lg hover:text-blue-300 transition duration-300 absolute left-10 border px-4 py-1 rounded-sm flex justify-center items-center gap-3"
+      <header className="sticky top-0 z-50 w-full border-b bg-primary">
+      <div className="container flex flex-wrap h-16 mx-auto items-center justify-between px-4">
+        <button
+          className="text-sm font-medium transition-colors border rounded-sm hover:bg-white hover:text-black text-white"
         >
-          <LuArrowBigLeftDash className="text-xl" /> Go Home
-        </Link>
-        <h1 className="text-white text-2xl font-bold ">My Projects</h1>
-      </header>
+          <Link className="flex items-center justify-center gap-2 px-3 py-2 text-sm text-nowrap flex-nowrap" href="/">
+            <TiHome className="h-4 w-4" />
+            Go Home
+          </Link>
+        </button>
+        
+        <div className="flex items-center gap-4">
+          <h1 className="text-xl font-semibold text-primary-foreground text-nowrap">
+            Projects
+          </h1>
+        </div>
+
+        <div className="w-[100px]" />
+      </div>
+    </header>
+
       <div className="min-h-screen bg-gradient-to-b from-gray-100 to-gray-200 py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
