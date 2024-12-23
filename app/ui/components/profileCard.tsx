@@ -21,7 +21,7 @@ const ProfileCard = ({ className }: { className?: string }) => {
       <div className="w-full h-full max-w-sm mx-auto ">
         <div className="h-full">
           <div className="flex h-full flex-col justify-between  items-center space-y-4">
-            <div className="relative w-28 h-28 rounded-full overflow-hidden border border-slate-800">
+            <div className="relative w-28 h-28 rounded-full overflow-hidden border border-slate-800 dark:border-white">
               <Image
                 src="/pic-two.png"
                 alt="Profile picture"
@@ -44,13 +44,13 @@ const ProfileCard = ({ className }: { className?: string }) => {
 
             <div className="w-full space-y-2">
               <div className="flex justify-between py-2">
-                <span className="text-gray-800">Residence:</span>
+                <span className="text-gray-800 dark:text-white">Residence:</span>
                 <span>
                   <b>India</b>
                 </span>
               </div>
               <div className="flex justify-between py-2">
-                <span className="text-gray-800">City:</span>
+                <span className="text-gray-800 dark:text-white">City:</span>
                 <span>Kolkata</span>
               </div>
             </div>
@@ -94,7 +94,7 @@ const ProfileCard = ({ className }: { className?: string }) => {
               </div>
             </div>
 
-            <Link href="/Resume.pdf" target="_blank" className="w-full text-nowrap flex justify-center items-center border border-slate-800 rounded-md py-3 mt-auto hover:bg-slate-800 hover:text-white transition-all">
+            <Link href="/Resume.pdf" target="_blank" className="w-full text-nowrap flex justify-center items-center border border-slate-800 rounded-md py-3 mt-auto hover:bg-slate-800 hover:text-white transition-all dark:hover:bg-white dark:hover:text-black">
                 Download Resume{" "}
                 <span className="ps-3">
                   <MdOutlineOpenInNew />

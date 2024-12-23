@@ -1,4 +1,5 @@
 "use client";
+import { useTheme } from "@/app/hooks/ThemeProvider";
 import React, { useEffect, useRef } from "react";
 
 interface MousePosition {
@@ -34,13 +35,32 @@ interface CanvasAnimationProps {
 
 const CanvasAnimation: React.FC<CanvasAnimationProps> = ({
   speed = 0.03,
-  colors = [
-    "hsla(0, 0%,25%, 1)",
-    "hsla(0,0%,15%, 1)",
-    "hsla(0,0%,10%, 1)",
-    "hsla(0, 0%,5%,1)",
-  ],
+  // colors = [
+  //   "hsla(0, 0%,25%, 1)",
+  //   "hsla(0,0%,15%, 1)",
+  //   "hsla(0,0%,10%, 1)",
+  //   "hsla(0, 0%,5%,1)",
+  // ],
 }) => {
+  const { theme } = useTheme();
+
+  console.log(theme);
+
+  const colors =
+    theme === "dark"
+      ? [
+          "hsla(0, 0%, 15%, 1)",
+          "hsla(0, 0%, 45%, 1)",
+          "hsla(0, 0%, 75%, 1)",
+          "hsla(0, 0%, 95%, 1)",
+        ]
+      : [
+          "hsla(0, 0%,25%, 1)",
+          "hsla(0, 0%,15%, 1)",
+          "hsla(0, 0%,10%, 1)",
+          "hsla(0, 0%, 5%,1)",
+        ];
+
   // const colorInputs = useRef<HTMLFormElement | null>(null);
   // useEffect(() => {
   //   function hslaToHex(h: number, s: number, l: number): string {
@@ -126,14 +146,14 @@ const CanvasAnimation: React.FC<CanvasAnimationProps> = ({
   let vel_x: number, vel_y: number;
   let cnt = 0;
   // let ms: MousePosition;
-  const ms = useRef<MousePosition >({
+  const ms = useRef<MousePosition>({
     msX: 0,
-  msY: 0,
-  updms: (n: { x: number; y: number }) => {
-    ms.current.msX = n.x;
-    ms.current.msY = n.y;
-  },
-  })
+    msY: 0,
+    updms: (n: { x: number; y: number }) => {
+      ms.current.msX = n.x;
+      ms.current.msY = n.y;
+    },
+  });
 
   const rad = Math.PI / 180;
 
@@ -302,8 +322,8 @@ const CanvasAnimation: React.FC<CanvasAnimationProps> = ({
       animate();
 
       window.addEventListener("resize", handleResize);
-      window.addEventListener("mousemove", (e) =>{
-        ms.current.updms({ x: e.screenX, y: e.screenY })
+      window.addEventListener("mousemove", (e) => {
+        ms.current.updms({ x: e.screenX, y: e.screenY });
       });
       window.addEventListener("touchmove", (e) => {
         ms.current.updms({ x: e.touches[0].pageX, y: e.touches[0].pageY });
@@ -313,7 +333,7 @@ const CanvasAnimation: React.FC<CanvasAnimationProps> = ({
         window.removeEventListener("resize", handleResize);
       };
     }
-  },);
+  });
 
   return (
     <>

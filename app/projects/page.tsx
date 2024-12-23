@@ -38,9 +38,9 @@ const Page = () => {
 
   return (
     <>
-      <header className="sticky top-0 z-50 w-full border-b bg-primary">
+      <header className="sticky top-0 z-50 w-full border-b bg-primary bg-black dark:bg-white">
         <div className="container flex flex-wrap h-16 mx-auto items-center justify-between px-4">
-          <button className="text-sm font-medium transition-colors border rounded-sm hover:bg-white hover:text-black text-white">
+          <button className="text-sm font-medium transition-colors border rounded-sm hover:bg-white hover:text-black text-white dark:text-black dark:hover:text-white dark:hover:bg-black">
             <Link
               className="flex items-center justify-center gap-2 px-3 py-2 text-sm text-nowrap flex-nowrap"
               href="/"
@@ -51,7 +51,7 @@ const Page = () => {
           </button>
 
           <div className="flex items-center gap-4">
-            <h1 className="text-xl font-semibold text-primary-foreground text-nowrap">
+            <h1 className="text-2xl font-bold text-primary-foreground text-nowrap ">
               Projects
             </h1>
           </div>
@@ -62,7 +62,7 @@ const Page = () => {
         </div>
       </header>
 
-      <div className="min-h-screen bg-gradient-to-b from-gray-100 to-gray-200 py-12 px-4 sm:px-6 lg:px-8">
+      <div className="min-h-screen bg-gradient-to-b from-gray-100 to-gray-200 py-12 px-4 sm:px-6 lg:px-8 dark:from-black ">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {projects ? (

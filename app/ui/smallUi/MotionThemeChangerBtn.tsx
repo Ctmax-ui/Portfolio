@@ -21,7 +21,7 @@ const MotionThemeChangerBtn = ({classList}:{classList?:string}) => {
         exit={{ rotate: 90, opacity: 0 }}
         transition={{ duration: 0.3 }}
       >
-        {theme == "light" ? (
+        {theme == "dark" ? (
           <BsFillSunFill className="h-5 w-5 text-white" />
         ) : (
           <MdModeNight className="h-5 w-5 text-zinc-900" />

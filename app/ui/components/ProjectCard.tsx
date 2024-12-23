@@ -25,8 +25,8 @@ export default function ProjectCard({ project }: ProjectProps) {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4 }}
     >
-      <Card className="group overflow-hidden border-none bg-gradient-to-br from-white to-gray-50/50 shadow-xl dark:from-gray-950 dark:to-gray-900/50">
-        <div className="relative h-56 overflow-hidden rounded-t-2xl ">
+      <Card className="group overflow-hidden border border-black bg-gradient-to-br from-white to-gray-50/50 shadow-xl dark:from-gray-950 dark:to-gray-900/50 dark:border-slate-200 ">
+        <div className="relative h-56 overflow-hidden">
           <div className="absolute inset-0 z-10 bg-black/60 opacity-0 transition-opacity group-hover:opacity-100 " />
           <Image
             src={`/api/imageproxy?url=${project.project_image}`}

@@ -39,15 +39,16 @@ const ProjectsSection = () => {
   ];
 
   return (
-    <section className="px-6 py-6" id="projects">
+    <section className="px-6 py-6 cursor-default" id="projects">
       <div className="max-w-6xl mx-auto">
-        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-zinc-900/50 backdrop-blur-sm mb-3">
-          <MdOutlineWork className="w-4 h-4 text-emerald-500" />
-          <span className="text-sm font-medium text-zinc-200">PORTFOLIO</span>
+        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-zinc-900/50 backdrop-blur-sm mb-3 dark:bg-slate-100">
+          <MdOutlineWork className="w-4 h-4 text-emerald-500 " />
+          <span className="text-sm font-medium text-zinc-200 dark:text-black">PORTFOLIO</span>
         </div>
         <div className="flex justify-between items-center mb-6">
-          <h2 className="text-4xl md:text-5xl font-bold text-white ">
-            Latest <span className="text-emerald-500">Projects</span>
+          <h2 className="text-4xl md:text-5xl font-bold text-emerald-500">
+            <span className="text-black dark:text-white">Latest </span> Projects
+
           </h2>
           <Link
             href={"/projects"}

@@ -50,8 +50,8 @@ export default function WorkExperienceSection() {
           <IoDocumentText className="w-4 h-4 text-emerald-500" />
           <span className="text-sm font-medium text-zinc-200">RESUME</span>
         </div>
-        <h2 className="text-4xl md:text-5xl font-bold text-white mb-3">
-          Work <span className="text-emerald-500">Experience</span>
+        <h2 className="text-4xl md:text-5xl font-bold text-emerald-500 mb-3">
+          <span className="text-black dark:text-white">Work</span> Experience
         </h2>
 
         <div className="relative space-y-8">
@@ -71,7 +71,7 @@ export default function WorkExperienceSection() {
                   <h3 className="text-xl font-semibold text-white">
                     {experience.company}
                   </h3>
-                  <span className="text-slate-800 text-sm">
+                  <span className="text-slate-800 dark:text-slate-300 text-sm">
                     {experience.period}
                   </span>
                 </div>
@@ -79,7 +79,7 @@ export default function WorkExperienceSection() {
                 <h4 className="text-lg font-medium text-emerald-500">
                   {experience.title}
                 </h4>
-                <p className="text-slate-800">{experience.description}</p>
+                <p className="text-slate-800 dark:text-slate-200">{experience.description}</p>
               </div>
             </div>
           ))}

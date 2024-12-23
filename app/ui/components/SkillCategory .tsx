@@ -66,14 +66,14 @@ export default function SkillsSection() {
   return (
     <section className=" px-6 py-4" id="skills">
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-4xl font-bold text-white mb-5">My <span className="text-emerald-500">Advantages</span></h2>
+        <h2 className="text-4xl font-bold text-emerald-500 mb-5"><span className="text-black dark:text-white">My</span> Advantages</h2>
         
         <div className="space-y-6">
           {skillCategories.map((category, index) => (
             <div key={index}>
               <div className="flex items-center gap-3 mb-3">
                 {category.icon}
-                <h3 className="text-xl font-semibold text-slate-800">
+                <h3 className="text-xl font-semibold text-slate-800 dark:text-slate-200">
                   {category.title}
                 </h3>
               </div>
@@ -82,7 +82,7 @@ export default function SkillsSection() {
                 {category.skills.map((skill, skillIndex) => (
                   <div
                     key={skillIndex}
-                    className="group relative bg-zinc-900/50 backdrop-blur-sm rounded-lg transition-transform hover:-translate-y-1 h-[60px] w-[60px]"
+                    className="group relative border border-transparent bg-zinc-900/50 dark:bg-transparrent dark:border-white dark:bg-slate-200 backdrop-blur-sm rounded-lg transition-transform hover:-translate-y-1 h-[60px] w-[60px]"
                   >
                     <div className="aspect-square relative flex items-center justify-center ">
                       {/* Logo container with hover effect */}

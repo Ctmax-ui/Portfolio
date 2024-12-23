@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect } from "react";
 import { FiMapPin } from "react-icons/fi";
-import { CiMail } from "react-icons/ci";
+import { IoMail } from "react-icons/io5";
 import Link from "next/link";
 
 interface ContactInfo {
@@ -31,7 +31,7 @@ export default function ContactSection() {
       details: "India, Kolkata.",
     },
     {
-      icon: <CiMail className="h-6 w-6 text-emerald-500" />,
+      icon: <IoMail className="h-6 w-6 text-emerald-500" />,
       title: "E-mail",
       details: "workdebjeet@gmail.com",
     },
@@ -81,16 +81,16 @@ export default function ContactSection() {
       ) : (
         <section className=" px-6 py-6" id="contact">
           <div className="max-w-6xl mx-auto">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-zinc-900/50 backdrop-blur-sm mb-3">
-              <CiMail className="w-4 h-4 text-emerald-500" />
-              <span className="text-sm font-medium text-zinc-200">CONTACT</span>
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-zinc-900/50 backdrop-blur-sm mb-3 dark:bg-slate-100 ">
+              <IoMail className="w-4 h-4 text-emerald-500" />
+              <span className="text-sm font-medium text-white dark:text-black">CONTACT</span>
             </div>
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 lg:mb-8">
               Contact <span className="text-emerald-500">Me.</span>
             </h2>
-            <p className="text-slate-900 text-lg mb-4 lg:mb-8 max-w-2xl">
+            <p className="text-slate-900 dark:text-slate-200 text-lg mb-4 lg:mb-8 max-w-2xl">
               Wanna hire me, please send massage through this form or by sending
-              an email on{" "}
+              an email on.{" "}
               <Link
                 href={`mailto:${contactInfo[1].details}`}
                 className="text-emerald-500 font-semibold"
@@ -103,14 +103,14 @@ export default function ContactSection() {
               <div className="space-y-3 lg:space-y-8 mb-3">
                 {contactInfo.map((info, index) => (
                   <div key={index} className="flex items-start gap-4">
-                    <div className="p-3 rounded-lg bg-zinc-900/50 backdrop-blur-sm">
+                    <div className="p-3 rounded-lg bg-zinc-900/50 dark:bg-slate-200  backdrop-blur-sm">
                       {info.icon}
                     </div>
                     <div>
                       <h3 className="text-white font-semibold mb-1">
                         {info.title}
                       </h3>
-                      <p className="text-slate-900">{info.details}</p>
+                      <p className="text-slate-900 dark:text-slate-200">{info.details}</p>
                     </div>
                   </div>
                 ))}
