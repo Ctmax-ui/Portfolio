@@ -1,7 +1,7 @@
 import localFont from "next/font/local";
 import { Metadata } from "next";
 import "./globals.css";
-
+import { ThemeProvider } from "./hooks/ThemeProvider";
 
 export const metadata: Metadata = {
   title: {
@@ -33,7 +33,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased transition-[dark]`}
       >
-          {children}
+        <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>
   );

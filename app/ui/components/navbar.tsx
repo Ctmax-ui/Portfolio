@@ -3,15 +3,13 @@ import Link from "next/link";
 import { FaHome } from "react-icons/fa";
 import { IoMdPerson } from "react-icons/io";
 import { MdOutlineWork } from "react-icons/md";
-// import { FaGraduationCap } from "react-icons/fa";
 import { MdOutlineEmail } from "react-icons/md";
 import { FaListUl } from "react-icons/fa";
 import { IoDocumentText } from "react-icons/io5";
 import { FaBlog } from "react-icons/fa";
-import { BsFillSunFill } from "react-icons/bs";
-import { MdModeNight } from "react-icons/md";
 import { useEffect, useState } from "react";
 import SlidingNav from "./SlidingNav";
+import MotionThemeChangerBtn from "../smallUi/MotionThemeChangerBtn";
 
 const navItems: {
   icon: React.ReactNode;
@@ -66,6 +64,7 @@ const navItems: {
 
 const Navbar = () => {
   const [currentVsLineElem, setCurrentVsLineElem] = useState<string | null>();
+  
 
   useEffect(() => {
     const sections = document.querySelectorAll<HTMLElement>("section[id]");
@@ -89,21 +88,11 @@ const Navbar = () => {
     };
   }, []);
 
-  const handleThemeChange = () => {
-
-  };
-
   return (
     <>
       <nav className="border glass-gradient h-[570px] w-[60px] fixed right-5 top-[8%] hidden lg:inline-block rounded-full">
         <div className="my-4 mx-auto flex justify-center items-center">
-          <button
-            onClick={handleThemeChange}
-            className="bg-emerald-500 rounded-full px-3 py-3 w-fit transition-all hover:scale-110"
-          >
-            <BsFillSunFill className="h-5 w-5 text-white hidden" />
-            <MdModeNight className="h-5 w-5 text-zinc-900  " />
-          </button>
+          <MotionThemeChangerBtn  />
         </div>
 
         <div className="space-y-4">
@@ -111,7 +100,7 @@ const Navbar = () => {
             <Link
               key={index}
               href={item.href}
-              className={`relative mx-auto w-fit flex items-center justify-center px-3 py-3 rounded-full transition-all duration-100 hover:bg-zinc-800 hover:text-white hover:scale-105 group ${
+              className={`relative mx-auto w-fit flex items-center justify-center px-3 py-3 rounded-full transition-all duration-100 hover:bg-zinc-800 hover:text-white hover:scale-105 group dark:text-white  ${
                 currentVsLineElem ==
                 (item.parser || item.href.replace("/#", ""))
                   ? "bg-emerald-600 text-white"

@@ -59,15 +59,15 @@ const ProjectsSection = () => {
         
         <div className="space-y-8">
           <Link href={projects[0].link} className="block group">
-            <div className="relative overflow-hidden rounded-2xl border border-zinc-800">
-              <div className="aspect-[2/1] relative">
+            <div className="relative ">
+              <div className="aspect-[2/.98] rounded-2xl border border-zinc-800 relative p-2 overflow-hidden">
                 <Image
                   src={projects[0].image}
                   alt={projects[0].title}
                   fill
-                  className="object-cover transition-transform duration-300 group-hover:scale-105"
+                  className="object-cover transition-transform duration-300 group-hover:scale-105 object-center"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 overflow-hidden">
                   <div className="absolute bottom-0 left-0 right-0 p-6">
                     <div className="text-emerald-500 text-sm mb-2">
                       {projects[0].category}
@@ -89,7 +89,7 @@ const ProjectsSection = () => {
                 className="block group"
               >
                 <div className="relative overflow-hidden rounded-xl border border-zinc-800">
-                  <div className="aspect-[2/1] relative">
+                  <div className="aspect-[2/.98] relative">
                     <Image
                       src={project.image}
                       alt={project.title}

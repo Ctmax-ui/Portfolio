@@ -2,20 +2,28 @@ import { Suspense } from "react";
 import BlogSkeletonCard from "./BlogCardSkeleton";
 import Blogs from "./Blogs";
 import Link from "next/link";
-import { LuArrowBigLeftDash } from "react-icons/lu";
+import MotionThemeChangerBtn from "../ui/smallUi/MotionThemeChangerBtn";
+import { TiHome } from "react-icons/ti";
 
 export default function Page() {
   return (
     <>
       <div className="min-h-screen font-sans ">
-        <header className="flex items-center justify-center bg-emerald-500 p-4 shadow-lg relative">
-          <Link
-            href={"/"}
-            className="text-white text-lg hover:text-slate-300 transition duration-300 absolute left-10 border px-4 py-1 rounded-sm flex justify-center items-center gap-3"
-          >
-            <LuArrowBigLeftDash className="text-xl" /> Go Home
-          </Link>
+        <header className="flex items-center justify-between bg-emerald-500 p-4 shadow-lg relative">
+        <button className="text-sm font-medium transition-colors border rounded-sm hover:bg-white hover:text-black text-white">
+            <Link
+              className="flex items-center justify-center gap-2 px-3 py-2 text-sm text-nowrap flex-nowrap"
+              href="/"
+            >
+              <TiHome className="h-4 w-4" />
+              Go Home
+            </Link>
+          </button>
           <h1 className="text-white text-2xl font-bold ">Latest Blogs</h1>
+
+          <div className="w-[100px]">
+            <MotionThemeChangerBtn classList="border" />
+          </div>
         </header>
         <div className="py-5 px-4 sm:px-6 lg:px-8">
           <Suspense

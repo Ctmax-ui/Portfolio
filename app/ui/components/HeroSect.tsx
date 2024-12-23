@@ -71,7 +71,7 @@ export default function HeroSect() {
             </Link>
           </div>
 
-          <div className="order-1 lg:order-2 scale-[.8] hover:scale-[1.2] lg:scale-1 w-full">
+          <div className="order-1 lg:order-2 scale-[.8] lg:scale-1 w-full">
             <div className="flex justify-center items-start">
               <Image
                 src="/pic-one.png"

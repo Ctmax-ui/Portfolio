@@ -105,6 +105,7 @@ export default function Blogs() {
             name="queryInput"
             id="qInput"
             type="text"
+            placeholder="Search Blogs...."
             className="border outline-none rounded-md rounded-e-none border-slate-300 focus:border-slate-500 bg-transparent  px-3 py-2 "
           />
           <button

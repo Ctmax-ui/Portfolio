@@ -3,7 +3,8 @@ import Link from "next/link";
 import ProjectCard from "../ui/components/ProjectCard";
 import { TiHome } from "react-icons/ti";
 import SkeletonCard from "./SkeletonCard";
-import {useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+import MotionThemeChangerBtn from "../ui/smallUi/MotionThemeChangerBtn";
 
 type ProjectType = {
   id: string;
@@ -29,45 +30,52 @@ const Page = () => {
         }
       );
       const data = await response.json();
-      console.log(data.data);
+      // console.log(data.data);
       setProjects(data.data);
     }
     fetchProjects();
-  },[]);
+  }, []);
 
   return (
     <>
       <header className="sticky top-0 z-50 w-full border-b bg-primary">
-      <div className="container flex flex-wrap h-16 mx-auto items-center justify-between px-4">
-        <button
-          className="text-sm font-medium transition-colors border rounded-sm hover:bg-white hover:text-black text-white"
-        >
-          <Link className="flex items-center justify-center gap-2 px-3 py-2 text-sm text-nowrap flex-nowrap" href="/">
-            <TiHome className="h-4 w-4" />
-            Go Home
-          </Link>
-        </button>
-        
-        <div className="flex items-center gap-4">
-          <h1 className="text-xl font-semibold text-primary-foreground text-nowrap">
-            Projects
-          </h1>
-        </div>
+        <div className="container flex flex-wrap h-16 mx-auto items-center justify-between px-4">
+          <button className="text-sm font-medium transition-colors border rounded-sm hover:bg-white hover:text-black text-white">
+            <Link
+              className="flex items-center justify-center gap-2 px-3 py-2 text-sm text-nowrap flex-nowrap"
+              href="/"
+            >
+              <TiHome className="h-4 w-4" />
+              Go Home
+            </Link>
+          </button>
 
-        <div className="w-[100px]" />
-      </div>
-    </header>
+          <div className="flex items-center gap-4">
+            <h1 className="text-xl font-semibold text-primary-foreground text-nowrap">
+              Projects
+            </h1>
+          </div>
+
+          <div className="w-[100px]">
+            <MotionThemeChangerBtn />
+          </div>
+        </div>
+      </header>
 
       <div className="min-h-screen bg-gradient-to-b from-gray-100 to-gray-200 py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {projects? projects.map((project) => (
+            {projects ? (
+              projects.map((project) => (
                 <ProjectCard key={project.id} project={project} />
-              )): <>
-              <SkeletonCard />
-              <SkeletonCard />
-              <SkeletonCard />
-            </>}
+              ))
+            ) : (
+              <>
+                <SkeletonCard />
+                <SkeletonCard />
+                <SkeletonCard />
+              </>
+            )}
           </div>
         </div>
       </div>
