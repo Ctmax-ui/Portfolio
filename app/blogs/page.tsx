@@ -22,7 +22,7 @@ export default function Page() {
           <h1 className="text-white text-2xl font-bold ">Latest Blogs</h1>
 
           <div className="w-[100px]">
-            <MotionThemeChangerBtn classList="border" />
+            <MotionThemeChangerBtn className="border" />
           </div>
         </header>
         <div className="py-5 px-4 sm:px-6 lg:px-8">

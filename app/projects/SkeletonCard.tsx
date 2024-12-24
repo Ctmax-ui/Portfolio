@@ -3,8 +3,8 @@ import { Card, CardContent, CardFooter } from "@/components/ui/card"
 
 export default function SkeletonCard() {
   return (
-    <Card className="overflow-hidden border-none bg-gradient-to-br from-white to-gray-50/50 shadow-xl dark:from-gray-950 dark:to-gray-900/50">
-      <div className="h-56 bg-gray-200 dark:bg-gray-700 animate-pulse" />
+    <Card className="overflow-hidden bg-gradient-to-br from-white to-gray-50/50 shadow-xl dark:from-gray-950 dark:to-gray-900/50 border border-black">
+      <div className="h-56 bg-gray-200 dark:bg-gray-700 animate-pulse border-b border-black" />
       <CardContent className="p-6">
         <div className="h-7 w-3/4 bg-gray-200 dark:bg-gray-700 animate-pulse mb-2" />
         <div className="h-4 bg-gray-200 dark:bg-gray-700 animate-pulse mb-1" />

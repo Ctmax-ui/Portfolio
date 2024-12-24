@@ -43,9 +43,6 @@ const CanvasAnimation: React.FC<CanvasAnimationProps> = ({
   // ],
 }) => {
   const { theme } = useTheme();
-
-  console.log(theme);
-
   const colors =
     theme === "dark"
       ? [

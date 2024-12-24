@@ -33,7 +33,7 @@ const ProfileCard = ({ className }: { className?: string }) => {
 
             <div className="text-center">
               <h2 className="text-xl font-semibold">Debjeet Biswas</h2>
-              <p className="text-emerald-600">
+              <p className="text-emerald-600 dark:text-emerald-500 font-semibold">
                 <Typical
                   steps={typicalOptions}
                   loop={Infinity}
@@ -69,7 +69,7 @@ const ProfileCard = ({ className }: { className?: string }) => {
                     className="flex flex-col items-center scale-[.8] hover:scale-[.85] transition-all cursor-default"
                   >
                     <div className="relative w-16 h-16">
-                      <div className="absolute inset-0 rounded-full border-[8px] border-[#262a29]"></div>
+                      <div className="absolute inset-0 rounded-full border-[8px] border-[#262a29] dark:border-white"></div>
                       <svg className="w-16 h-16 transform -rotate-90">
                         <circle
                           cx="32"
@@ -78,7 +78,7 @@ const ProfileCard = ({ className }: { className?: string }) => {
                           stroke="currentColor"
                           strokeWidth="4"
                           fill="none"
-                          className="text-white"
+                          className="text-white dark:text-black"
                           strokeDasharray={`${
                             (skill.value / 100) * 175.9
                           } 175.9`}
@@ -94,7 +94,7 @@ const ProfileCard = ({ className }: { className?: string }) => {
               </div>
             </div>
 
-            <Link href="/Resume.pdf" target="_blank" className="w-full text-nowrap flex justify-center items-center border border-slate-800 rounded-md py-3 mt-auto hover:bg-slate-800 hover:text-white transition-all dark:hover:bg-white dark:hover:text-black">
+            <Link href="/Resume.pdf" target="_blank" className="w-full text-nowrap flex justify-center items-center border border-slate-800 rounded-md py-3 mt-auto hover:bg-slate-800 hover:text-white transition-all dark:hover:bg-white dark:hover:text-black dark:border-slate-200">
                 Download Resume{" "}
                 <span className="ps-3">
                   <MdOutlineOpenInNew />

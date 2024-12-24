@@ -100,7 +100,7 @@ const Navbar = () => {
             <Link
               key={index}
               href={item.href}
-              className={`relative mx-auto w-fit flex items-center justify-center px-3 py-3 rounded-full transition-all duration-100 hover:bg-zinc-800 hover:text-white hover:scale-105 group dark:text-white  ${
+              className={`relative mx-auto w-fit flex items-center justify-center px-3 py-3 rounded-full transition-all duration-100 hover:bg-zinc-800 hover:text-white dark:hover:text-black dark:hover:bg-slate-100 hover:scale-105 group dark:text-white  ${
                 currentVsLineElem ==
                 (item.parser || item.href.replace("/#", ""))
                   ? "bg-emerald-600 text-white"

@@ -4,6 +4,7 @@ import { TiThMenuOutline } from "react-icons/ti";
 import { IoClose } from "react-icons/io5";
 import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
+import MotionThemeChangerBtn from "../smallUi/MotionThemeChangerBtn";
 
 export default function SlidingNav({
   navItems,
@@ -68,6 +69,7 @@ export default function SlidingNav({
               transition={{ type: "spring", damping: 20, stiffness: 100,duration: 0.3 }}
               className="fixed top-0 right-0 h-full w-[50%] bg-white dark:bg-gray-900 shadow-xl z-50"
             >
+              {/* <MotionThemeChangerBtn className="absolute top-5 left-10" /> */}
               <button
                 onClick={() => setIsOpen(false)}
                 className="absolute top-5 right-5 p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-full"
@@ -94,10 +96,14 @@ export default function SlidingNav({
                           >
                             {v.label}
                           </Link>
+                          
                         </li>
                       </>
                     );
                   })}
+                  <li className="flex justify-center">
+                    <MotionThemeChangerBtn />
+                  </li>
                 </ul>
               </nav>
             </motion.div>
