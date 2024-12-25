@@ -39,10 +39,13 @@ export default function SlidingNav({
 
   return (
     <>
+    <div className="fixed top-2 left-2 lg:hidden">
+      <MotionThemeChangerBtn />
+    </div>
       <nav className="block lg:hidden">
         <button
           onClick={() => setIsOpen(true)}
-          className="h-[40px] w-[40px] fixed top-5 right-5 flex justify-center items-center border glass-gradient rounded-sm z-40"
+          className="h-[40px] w-[40px] fixed top-2 right-2 flex justify-center items-center border glass-gradient rounded-sm z-40"
           aria-label="Open menu"
           aria-expanded={isOpen}
         >
@@ -69,7 +72,7 @@ export default function SlidingNav({
               transition={{ type: "spring", damping: 20, stiffness: 100,duration: 0.3 }}
               className="fixed top-0 right-0 h-full w-[50%] bg-white dark:bg-gray-900 shadow-xl z-50"
             >
-              {/* <MotionThemeChangerBtn className="absolute top-5 left-10" /> */}
+              
               <button
                 onClick={() => setIsOpen(false)}
                 className="absolute top-5 right-5 p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-full"
@@ -89,7 +92,7 @@ export default function SlidingNav({
                             className={`block p-2 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors border-b  ${
                               currentVsLineElem ==
                               (v.parser || v?.href?.replace("/#", ""))
-                                ? "border-slate-500"
+                                ? "border-slate-500 dark:border-slate-200"
                                 : "border-transparent"
                             }`}
                             onClick={() => setIsOpen(false)}
@@ -101,9 +104,6 @@ export default function SlidingNav({
                       </>
                     );
                   })}
-                  <li className="flex justify-center">
-                    <MotionThemeChangerBtn />
-                  </li>
                 </ul>
               </nav>
             </motion.div>

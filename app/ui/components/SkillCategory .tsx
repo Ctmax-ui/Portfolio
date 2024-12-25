@@ -78,11 +78,11 @@ export default function SkillsSection() {
                 </h3>
               </div>
               
-              <div className="flex flex-wrap gap-4">
+              <div className="flex flex-wrap md:gap-4 ">
                 {category.skills.map((skill, skillIndex) => (
                   <div
                     key={skillIndex}
-                    className="group relative border border-transparent bg-zinc-900/50 dark:bg-transparrent dark:border-white dark:bg-slate-200 backdrop-blur-sm rounded-lg transition-transform hover:-translate-y-1 h-[60px] w-[60px]"
+                    className="group relative border border-transparent bg-zinc-900/50 dark:bg-transparrent dark:border-white dark:bg-slate-200 backdrop-blur-sm rounded-lg transition-transform hover:-translate-y-1 h-[60px] w-[60px] scale-[.7] md:scale-100"
                   >
                     <div className="aspect-square relative flex items-center justify-center ">
                       {/* Logo container with hover effect */}

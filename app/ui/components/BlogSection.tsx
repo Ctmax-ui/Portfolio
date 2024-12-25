@@ -54,7 +54,7 @@ const BlogSection = () => {
               <Link key={post.id} href={`/blogs/${post.id}`} className="group block">
                 <div className="relative overflow-hidden rounded-xl border border-zinc-800 bg-zinc-900/50 dark:border-slate-300">
                   <div className="grid md:grid-cols-[100px,1fr] items-center gap-6 p-6">
-                    <div className="relative aspect-[3/2] md:aspect-square overflow-hidden rounded-lg border dark:border-slate-300">
+                    <div className="relative aspect-[3/2] md:aspect-square overflow-hidden rounded-lg border dark:border-slate-300 hidden md:block">
                       <Image
                         src={`/api/imageproxy?url=${post.blog_image}`}
                         alt={post.blog_title}
