@@ -2,8 +2,8 @@
 import BlogCard from "@/app/ui/components/BlogCard";
 import React, { useEffect, useState } from "react";
 import BlogSkeletonCard from "./BlogCardSkeleton";
-import { FaChevronRight, FaChevronLeft } from "react-icons/fa";
 import {useRouter, useSearchParams } from "next/navigation";
+import PagiginationNav from "./PagiginationNav";
 
 export interface blogsType {
   data: {
@@ -94,10 +94,10 @@ export default function Blogs() {
 
   return (
     <>
-      <div className="flex justify-between items-center mt-4 mb-10 ">
+      <div className="flex flex-col sm:flex-row justify-between items-center mt-4 mb-10 ">
         <form
           onSubmit={queryFetcherHandler}
-          className="hover:bg-gray-200 rounded-md"
+          className="hover:bg-gray-200 dark:hover:bg-slate-900 rounded-md"
         >
           <input
             onChange={(e) => setInputQuery(e.target.value)}
@@ -106,63 +106,20 @@ export default function Blogs() {
             id="qInput"
             type="text"
             placeholder="Search Blogs...."
-            className="border outline-none rounded-md rounded-e-none border-slate-300 focus:border-slate-500 bg-transparent  px-3 py-2 "
+            className="border outline-none rounded-md rounded-e-none border-slate-300 focus:border-slate-500 dark:focus:border-slate-200 bg-transparent  px-3 py-2 "
           />
           <button
             type="submit"
-            className="border border-l-0 focus:border-l rounded-md rounded-s-none border-slate-300  focus:border-slate-500 px-3 py-2 hover:bg-gray-200"
+            className="border border-l-0 focus:border-l rounded-md rounded-s-none border-slate-300  focus:border-slate-500 px-3 py-2 hover:bg-gray-200 dark:hover:text-black"
           >
             Search
           </button>
         </form>
 
-        <nav className="flex items-center justify-center">
-          <button
-            onClick={() => handlePageChange(currentPage - 1)}
-            disabled={currentPage <= 1}
-            className={`border-slate-500 rounded-s-md text-slate-800  transition-all p-4 border border-r-0 ml-2 ${
-              currentPage <= 1
-                ? "cursor-not-allowed text-opacity-70 hover:bg-gray-100"
-                : " hover:bg-slate-900 hover:text-white"
-            }`}
-          >
-            <FaChevronLeft className="h-4 w-4" />
-          </button>
+        <PagiginationNav currentPage={currentPage} handlePageChange={handlePageChange} totalPages={totalPages} blogs={blogs} />
 
-          {Array.from({ length: blogs?.totalPages || 1 }, (_, i) => i + 1)
-            .slice(
-              currentPage < 5 ? 0 : currentPage - 5,
-              currentPage < 5 ? 9 : currentPage + 4
-            )
-            .map((page) => (
-              <button
-                key={page}
-                onClick={() => handlePageChange(page)}
-                className={`${
-                  currentPage === page
-                    ? "bg-gray-400 text-slate-900 transition-all"
-                    : " hover:bg-gray-200 "
-                }  border px-3 py-3 border-slate-500 border-r-0`}
-              >
-                {`${page}`.length < 2 ? 0 : ""}
-                {page}
-              </button>
-            ))}
-
-          <button
-            onClick={() => handlePageChange(currentPage + 1)}
-            disabled={currentPage >= totalPages}
-            className={`border-slate-500 rounded-e-md text-slate-800  transition-all p-4 border ${
-              currentPage >= totalPages
-                ? "cursor-not-allowed text-opacity-70 hover:bg-gray-100"
-                : " hover:bg-slate-900 hover:text-white"
-            }`}
-          >
-            <FaChevronRight className="h-4 w-4" />
-          </button>
-        </nav>
       </div>
-      <div className="grid h-full grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-5 ">
+      <div className="grid h-full grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-5 ">
         {isLoading ? (
           <>
             <BlogSkeletonCard />
@@ -175,51 +132,7 @@ export default function Blogs() {
         )}
       </div>
 
-      <nav className="flex items-center justify-center mt-10">
-        <button
-          onClick={() => handlePageChange(currentPage - 1)}
-          disabled={currentPage <= 1}
-          className={`border-slate-500 rounded-s-md text-slate-800  transition-all p-4 border border-r-0 ml-2 ${
-            currentPage <= 1
-              ? "cursor-not-allowed text-opacity-70 hover:bg-gray-100"
-              : " hover:bg-slate-900 hover:text-white"
-          }`}
-        >
-          <FaChevronLeft className="h-4 w-4" />
-        </button>
-
-        {Array.from({ length: blogs?.totalPages || 1 }, (_, i) => i + 1)
-          .slice(
-            currentPage < 5 ? 0 : currentPage - 5,
-            currentPage < 5 ? 9 : currentPage + 4
-          )
-          .map((page) => (
-            <button
-              key={page}
-              onClick={() => handlePageChange(page)}
-              className={`${
-                currentPage === page
-                  ? "bg-gray-400 text-slate-900 transition-all"
-                  : " hover:bg-gray-200 "
-              }  border px-3 py-3 border-slate-500 border-r-0`}
-            >
-              {`${page}`.length < 2 ? 0 : ""}
-              {page}
-            </button>
-          ))}
-
-        <button
-          onClick={() => handlePageChange(currentPage + 1)}
-          disabled={currentPage >= totalPages}
-          className={`border-slate-500 rounded-e-md text-slate-800  transition-all p-4 border ${
-            currentPage >= totalPages
-              ? "cursor-not-allowed text-opacity-70 hover:bg-gray-100"
-              : " hover:bg-slate-900 hover:text-white"
-          }`}
-        >
-          <FaChevronRight className="h-4 w-4" />
-        </button>
-      </nav>
+      <PagiginationNav currentPage={currentPage} handlePageChange={handlePageChange} totalPages={totalPages} blogs={blogs} />
     </>
   );
 }

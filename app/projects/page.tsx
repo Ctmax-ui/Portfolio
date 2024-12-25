@@ -40,13 +40,15 @@ const Page = () => {
     <>
       <header className="sticky top-0 z-50 w-full border-b bg-primary bg-black dark:bg-white">
         <div className="container flex flex-wrap h-16 mx-auto items-center justify-between px-4">
-          <button className="text-sm font-medium transition-colors border rounded-sm hover:bg-white hover:text-black text-white dark:text-black dark:hover:text-white dark:hover:bg-black">
+          <button className="text-sm font-medium transition-colors border hover:bg-white hover:text-black text-white dark:text-black dark:hover:text-white dark:hover:bg-black rounded-full md:rounded-sm py-1 md:p-0">
             <Link
               className="flex items-center justify-center gap-2 px-3 py-2 text-sm text-nowrap flex-nowrap"
               href="/"
             >
               <TiHome className="h-4 w-4" />
+              <span className="hidden md:block">
               Go Home
+              </span>
             </Link>
           </button>
 
@@ -56,8 +58,8 @@ const Page = () => {
             </h1>
           </div>
 
-          <div className="w-[100px]">
-            <MotionThemeChangerBtn />
+          <div className="md:w-[100px] flex justify-end items-center">
+            <MotionThemeChangerBtn className="border bg-white dark:bg-black rounded-full p-2" />
           </div>
         </div>
       </header>
