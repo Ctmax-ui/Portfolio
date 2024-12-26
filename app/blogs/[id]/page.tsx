@@ -5,7 +5,6 @@ import BreadcrumbBlogNav from "./BreadcrumbBlogNav";
 import BlogArticle from "./BlogArticle";
 import { BlogSkeleton } from "./BlogSkeleton";
 import { Suspense } from "react";
-
 const page = async (props: { params: Promise<{ id: string }> }) => {
   const params = await props.params;
   const blogId = await params.id;
