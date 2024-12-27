@@ -1,15 +1,19 @@
-'use client'
+"use client";
 import { motion } from "framer-motion";
 import { BsFillSunFill } from "react-icons/bs";
 import { MdModeNight } from "react-icons/md";
 import { useTheme } from "@/app/hooks/ThemeProvider";
 
-const MotionThemeChangerBtn = ({className}:{className?:string}) => {
+const MotionThemeChangerBtn = ({ className }: { className?: string }) => {
   const { theme, toggleTheme } = useTheme();
   return (
     <motion.button
       onClick={toggleTheme}
-      className={className?`${className}`:`bg-emerald-500 rounded-full px-3 py-3 w-fit `}
+      className={
+        className
+          ? `${className}`
+          : `bg-emerald-500 rounded-full px-3 py-3 w-fit `
+      }
       whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.9 }}
       transition={{ type: "spring", stiffness: 200, damping: 10 }}

@@ -39,7 +39,7 @@ export default function SlidingNav({
 
   return (
     <>
-    <div className="fixed top-2 left-2 lg:hidden">
+    <div className="fixed top-1 left-2 lg:hidden">
       <MotionThemeChangerBtn />
     </div>
       <nav className="block lg:hidden">
