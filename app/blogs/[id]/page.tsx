@@ -26,9 +26,7 @@ const page = async (props: { params: Promise<{ id: string }> }) => {
           <MotionThemeChangerBtn className="border p-2 rounded-full bg-white dark:bg-black" />
         </div>
       </header>
-
       <BreadcrumbBlogNav blogId={blogId} />
-
       <Suspense fallback={<BlogSkeleton />}>
         <BlogArticle blogId={blogId} />
       </Suspense>

@@ -19,12 +19,10 @@ export default function SlidingNav({
   currentVsLineElem: string | null | undefined;
 }) {
   const [isOpen, setIsOpen] = useState(false);
-
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
       if (e.key === "Escape") setIsOpen(false);
     };
-
     document.addEventListener("keydown", handleEscape);
     return () => document.removeEventListener("keydown", handleEscape);
   }, []);
