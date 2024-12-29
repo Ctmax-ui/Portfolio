@@ -17,7 +17,6 @@ interface BlogCardProps {
 
 export default function BlogCard({ blog }: BlogCardProps) {
   const parsedDate = new Date(blog.updated_at).toLocaleString();
-
   return (
     <Card className="overflow-hidden shadow-lg transition-transform duration-300 hover:scale-[1.02] h-[460px] flex flex-col dark:border-slate-300">
       <div className="relative h-52 w-full ">

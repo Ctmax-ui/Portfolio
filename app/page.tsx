@@ -36,7 +36,6 @@ const Page = async () => {
                 "h-[570px] w-[25%] max-w-[400px] fixed left-10 top-[8%] p-5 glass-gradient hidden lg:block"
               }
             />
-
             <div className="absolute w-full lg:w-[62%] px-2 md:px-5 lg:px-0 lg:left-[30%] flex flex-col justify-center items-center gap-10 pb-[25%] top-[8%]">
               <Section className="h-[570px] w-full block lg:hidden flex justify-center">
                 <ProfileCard
@@ -67,7 +66,6 @@ const Page = async () => {
                 <ContactSection />
               </Section>
             </div>
-
             <Navbar />
           </div>
         </Suspense>

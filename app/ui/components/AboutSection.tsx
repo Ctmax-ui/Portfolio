@@ -2,8 +2,6 @@ import Link from "next/link";
 import { FaPerson } from "react-icons/fa6";
 import { MdOutlineOpenInNew } from "react-icons/md";
 
-
-
 export default function AboutSection({
   name = "Debjeet Biswas",
   bio = `a passionate coder who finds joy in creating
