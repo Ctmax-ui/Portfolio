@@ -21,7 +21,7 @@ const PagiginationNav = ({
         className={`border-slate-500 rounded-s-md text-slate-800 dark:text-white/50 transition-all p-4 border border-r-0 ml-2 ${
           currentPage <= 1
             ? "cursor-not-allowed text-opacity-70 hover:bg-gray-100 dark:hover:text-black/50"
-            : " hover:bg-slate-900 dark:hover:bg-white hover:text-white dark:hover:text-black "
+            : "hover:bg-slate-900 dark:hover:bg-white hover:text-white dark:hover:text-black "
         }`}
       >
         <FaChevronLeft className="h-4 w-4" />
@@ -53,7 +53,7 @@ const PagiginationNav = ({
         className={`border-slate-500 rounded-e-md text-slate-800  transition-all p-4 border dark:text-white ${
           currentPage >= totalPages
             ? "cursor-not-allowed text-opacity-70 hover:bg-gray-100 dark:hover:text-black/50"
-            : " hover:bg-slate-900 dark:hover:bg-white hover:text-white dark:hover:text-black "
+            : "hover:bg-slate-900 dark:hover:bg-white hover:text-white dark:hover:text-black "
         }`}
       >
         <FaChevronRight className="h-4 w-4" />

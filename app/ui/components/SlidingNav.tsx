@@ -70,7 +70,6 @@ export default function SlidingNav({
               transition={{ type: "spring", damping: 20, stiffness: 100,duration: 0.3 }}
               className="fixed top-0 right-0 h-full w-[50%] bg-white dark:bg-gray-900 shadow-xl z-50"
             >
-              
               <button
                 onClick={() => setIsOpen(false)}
                 className="absolute top-5 right-5 p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-full"
@@ -78,7 +77,6 @@ export default function SlidingNav({
               >
                 <IoClose className="w-6 h-6" />
               </button>
-
               <nav className="p-8 pt-20">
                 <ul className="space-y-4">
                   {navItems.map((v, i) => {
@@ -97,7 +95,6 @@ export default function SlidingNav({
                           >
                             {v.label}
                           </Link>
-                          
                         </li>
                       </>
                     );

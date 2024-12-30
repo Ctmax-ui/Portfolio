@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import BlogSkeletonCard from "./BlogCardSkeleton";
 import {useRouter, useSearchParams } from "next/navigation";
 import PagiginationNav from "./PagiginationNav";
+import BlogsQueryComponent from "./BlogsQueryComponent";
 
 export interface blogsType {
   data: {
@@ -24,7 +25,7 @@ async function getBlogs(
   inputQuery?: string
 ): Promise<blogsType> {
   const response = await fetch(
-    `${window.location.origin || 'http://localhost:3000'}/api/blogs?page=${pageNo}&query=${inputQuery}`,
+    `/api/blogs?page=${pageNo}&query=${inputQuery}`,
     {
       method: "GET",
       next: { revalidate: 60 },
@@ -95,26 +96,7 @@ export default function Blogs() {
   return (
     <>
       <div className="flex flex-col sm:flex-row justify-between items-center mt-4 mb-10 ">
-        <form
-          onSubmit={queryFetcherHandler}
-          className="hover:bg-gray-200 dark:hover:bg-slate-900 rounded-md"
-        >
-          <input
-            onChange={(e) => setInputQuery(e.target.value)}
-            value={inputQuery}
-            name="queryInput"
-            id="qInput"
-            type="text"
-            placeholder="Search Blogs...."
-            className="border outline-none rounded-md rounded-e-none border-slate-300 focus:border-slate-500 dark:focus:border-slate-200 bg-transparent  px-3 py-2 "
-          />
-          <button
-            type="submit"
-            className="border border-l-0 focus:border-l rounded-md rounded-s-none border-slate-300  focus:border-slate-500 px-3 py-2 hover:bg-gray-200 dark:hover:text-black"
-          >
-            Search
-          </button>
-        </form>
+        <BlogsQueryComponent inputQuery={inputQuery} setInputQuery={setInputQuery} queryFetcherHandler={queryFetcherHandler} />
 
         <PagiginationNav currentPage={currentPage} handlePageChange={handlePageChange} totalPages={totalPages} blogs={blogs} />
 
