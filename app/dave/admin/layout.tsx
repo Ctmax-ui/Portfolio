@@ -3,6 +3,7 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
 import { redirect } from "next/navigation";
 import SignOutBtn from "./utils/SignOutBtn";
+import MotionThemeChangerBtn from "@/app/ui/smallUi/MotionThemeChangerBtn";
 
 export default async function Layout({
   children,
@@ -23,7 +24,7 @@ export default async function Layout({
             <Link href="/" className="border px-2 py-2">
               Go back
             </Link>
-
+            <MotionThemeChangerBtn />
             <SignOutBtn />
           </header>
           <div className="flex h-full">
