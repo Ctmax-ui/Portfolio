@@ -2,7 +2,7 @@
 import BlogCard from "@/app/ui/components/BlogCard";
 import React, { useEffect, useState } from "react";
 import BlogSkeletonCard from "./BlogCardSkeleton";
-import {useRouter, useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import PagiginationNav from "./PagiginationNav";
 import BlogsQueryComponent from "./BlogsQueryComponent";
 
@@ -50,7 +50,6 @@ export default function Blogs() {
   const [fetchQuery, setFetchQuery] = useState<string>(paramQuery || "");
   const router = useRouter();
 
-
   useEffect(() => {
     const paramQuery = params.get("query");
     if (paramQuery) {
@@ -95,11 +94,19 @@ export default function Blogs() {
 
   return (
     <>
-      <div className="flex flex-col sm:flex-row justify-between items-center mt-4 mb-10 ">
-        <BlogsQueryComponent inputQuery={inputQuery} setInputQuery={setInputQuery} queryFetcherHandler={queryFetcherHandler} />
+      <div className="flex flex-col md:flex-row justify-between items-center mt-4 mb-10 ">
+        <BlogsQueryComponent
+          inputQuery={inputQuery}
+          setInputQuery={setInputQuery}
+          queryFetcherHandler={queryFetcherHandler}
+        />
 
-        <PagiginationNav currentPage={currentPage} handlePageChange={handlePageChange} totalPages={totalPages} blogs={blogs} />
-
+        <PagiginationNav
+          currentPage={currentPage}
+          handlePageChange={handlePageChange}
+          totalPages={totalPages}
+          blogs={blogs}
+        />
       </div>
       <div className="grid h-full grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-5 ">
         {isLoading ? (
@@ -114,7 +121,12 @@ export default function Blogs() {
         )}
       </div>
 
-      <PagiginationNav currentPage={currentPage} handlePageChange={handlePageChange} totalPages={totalPages} blogs={blogs} />
+      <PagiginationNav
+        currentPage={currentPage}
+        handlePageChange={handlePageChange}
+        totalPages={totalPages}
+        blogs={blogs}
+      />
     </>
   );
 }

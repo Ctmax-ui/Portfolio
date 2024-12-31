@@ -13,8 +13,9 @@ const PagiginationNav = ({
   blogs?: blogsType;
   handlePageChange: (props: number) => void;
 }) => {
+  // console.log("Total " + totalPages, "current page " + currentPage);
   return (
-    <nav className="flex items-center justify-center mt-5 sm:mt-0">
+    <nav className="flex items-center justify-center mt-5 md:mt-0">
       <button
         onClick={() => handlePageChange(currentPage - 1)}
         disabled={currentPage <= 1}
@@ -29,8 +30,8 @@ const PagiginationNav = ({
 
       {Array.from({ length: blogs?.totalPages || 1 }, (_, i) => i + 1)
         .slice(
-          currentPage < 5 ? 0 : currentPage - 5,
-          currentPage < 5 ? 9 : currentPage + 4
+          Math.max(0, Math.min(totalPages - 5, currentPage - 3)),
+          Math.min(totalPages, Math.max(5, currentPage + 2))
         )
         .map((page) => (
           <button

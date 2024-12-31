@@ -44,7 +44,7 @@ const BlogForm = () => {
             value={title}
             onChange={(e) => setTitle(e.target.value)}
             required
-            className="px-5 py-4 w-full border border-slate-800 rounded-sm dark:bg-slate-900"
+            className="px-5 py-4 w-full border border-slate-800 dark:border-slate-200 rounded-sm dark:bg-black"
           />
         </div>
         <div className="">
@@ -55,7 +55,7 @@ const BlogForm = () => {
             value={imageUrl}
             onChange={(e) => setImageUrl(e.target.value)}
             required
-            className="px-5 py-4 w-full border border-slate-800 rounded-sm"
+            className="px-5 py-4 w-full border border-slate-800 dark:border-slate-200 rounded-sm dark:bg-black"
           />
         </div>
         <div className="">
@@ -66,7 +66,7 @@ const BlogForm = () => {
             onChange={(e) => setDescription(e.target.value)}
             required
             rows={10}
-            className="border px-5 py-4 border-slate-700 w-full min-h-[10vh] h-[18vh] max-h-[30vh] rounded-sm "
+            className="border px-5 py-4 border-slate-800 dark:border-slate-200 rounded-sm dark:bg-black w-full min-h-[10vh] h-[18vh] max-h-[30vh]"
             style={{ scrollbarWidth: "thin" }}
           />
         </div>
@@ -75,7 +75,7 @@ const BlogForm = () => {
           <label htmlFor="">Tags:</label>
           <select
             name=""
-            className="border px-5 py-4 border-slate-700 w-full"
+            className="border px-5 py-4 border-slate-800 dark:border-slate-200 rounded-sm dark:bg-black w-full"
             id=""
           >
             <option value="default">Default</option>
@@ -84,7 +84,7 @@ const BlogForm = () => {
         <button
           type="submit"
           disabled={loading}
-          className="border rounded-sm py-2 border-blue-500 text-black transition-all hover:bg-blue-500 hover:text-white"
+          className="border rounded-sm py-2 border-blue-500 text-black transition-all hover:bg-blue-500 hover:text-white dark:text-white"
         >
           {loading ? "Submitting..." : "Submit Blog"}
         </button>
