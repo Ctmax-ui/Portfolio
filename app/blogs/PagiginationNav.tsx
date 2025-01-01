@@ -47,7 +47,6 @@ const PagiginationNav = ({
             {page}
           </button>
         ))}
-
       <button
         onClick={() => handlePageChange(currentPage + 1)}
         disabled={currentPage >= totalPages}
@@ -62,5 +61,4 @@ const PagiginationNav = ({
     </nav>
   );
 };
-
 export default PagiginationNav;
