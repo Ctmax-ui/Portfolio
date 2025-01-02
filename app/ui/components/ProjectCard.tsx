@@ -54,14 +54,22 @@ export default function ProjectCard({ project }: ProjectProps) {
           </div>
         </CardContent>
         <CardFooter className="grid grid-cols-2 gap-4 p-6 pt-0">
-          <Link target="customTab" href={project.project_demo} className="group/button relative overflow-hidden rounded-md border-2 border-primary px-4 py-2 font-medium transition-colors text-nowrap">
-              <span className="absolute inset-0 z-0 h-full translate-y-full bg-primary transition-transform duration-300 group-hover/button:translate-y-0" />
-              <span className="relative z-10 flex items-center justify-center gap-2 transition-colors duration-300 group-hover/button:text-primary-foreground">
-                Live Demo
-                <ExternalLink className="h-4 w-4" />
-              </span>
-            </Link>
-            <Link target="customTab" href={project.project_code} className="group/button relative overflow-hidden rounded-md border-2 border-primary px-4 py-2 font-medium transition-colors text-nowrap">
+          <Link
+            target="customTab"
+            href={project.project_demo}
+            className="group/button relative overflow-hidden rounded-md border-2 border-primary px-4 py-2 font-medium transition-colors text-nowrap"
+          >
+            <span className="absolute inset-0 z-0 h-full translate-y-full bg-primary transition-transform duration-300 group-hover/button:translate-y-0" />
+            <span className="relative z-10 flex items-center justify-center gap-2 transition-colors duration-300 group-hover/button:text-primary-foreground">
+              Live Demo
+              <ExternalLink className="h-4 w-4" />
+            </span>
+          </Link>
+          <Link
+            target="customTab"
+            href={project.project_code}
+            className="group/button relative overflow-hidden rounded-md border-2 border-primary px-4 py-2 font-medium transition-colors text-nowrap"
+          >
             <span className="absolute inset-0 z-0 h-full translate-y-full bg-primary transition-transform duration-300 group-hover/button:translate-y-0" />
             <span className="relative z-10 flex items-center justify-center gap-2 transition-colors duration-300 group-hover/button:text-primary-foreground">
               View Code

@@ -1,4 +1,4 @@
-'use server'
+"use server";
 import { sql } from "@vercel/postgres";
 
 export async function fetchBlogById(id: string) {
@@ -23,5 +23,17 @@ export async function fetchBlogById(id: string) {
     return { message: "found nothing", data: null, status: 404 };
   } catch {
     return { message: "Internal server error", data: null, status: 500 };
+  }
+}
+
+export async function fetchProjects() {
+  try {
+    const { rows } = await sql`SELECT * FROM projects ORDER BY updated_at DESC`;
+    if(rows.length != 0){
+    return { message: "success", data: rows, status: 200 };
+    }
+    return {message: "Projects not found", status: 404}
+  } catch {
+    return { message: "Server Error", status: 500 };
   }
 }

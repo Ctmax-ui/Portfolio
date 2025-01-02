@@ -29,3 +29,40 @@ export async function createBlog({
     return { message: "500 Internal Server Error", status: 500 };
   }
 }
+
+export async function createProjects({
+  project_title,
+  project_image,
+  description,
+  tags,
+  project_demo,
+  project_code,
+}: {
+  project_title: string;
+  project_image: string;
+  description: string;
+  tags: string[];
+  project_demo: string;
+  project_code: string;
+}) {
+  try {
+    await sql`
+      INSERT INTO projects (project_title, project_image, project_body, project_demo, project_code, created_at, updated_at) 
+      VALUES (
+        ${project_title.trim()}, 
+        ${project_image}, 
+        ${JSON.stringify({ description: description, tags: tags })}::jsonb,
+        ${project_demo},
+        ${project_code},
+        NOW(), 
+        NOW()
+      )
+      ON CONFLICT (id) DO NOTHING;
+    `;
+
+    return { message: `project created successfully`, status: 201 };
+  } catch {
+    // console.error("Database Error:", err);
+    return { message: "500 Internal Server Error", status: 500 };
+  }
+}
