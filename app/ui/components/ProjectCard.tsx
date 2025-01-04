@@ -42,7 +42,7 @@ export default function ProjectCard({ project }: ProjectProps) {
           <p className="mb-6 line-clamp-3 text-sm text-muted-foreground h-[60px]">
             {project.project_body.description}
           </p>
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-nowrap overflow-x-auto scrollbar-none gap-2">
             {project.project_body.tags.map((tag, i) => (
               <div
                 key={i}

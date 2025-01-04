@@ -30,7 +30,7 @@ export async function createBlog({
   }
 }
 
-export async function createProjects({
+export async function createProject({
   project_title,
   project_image,
   description,

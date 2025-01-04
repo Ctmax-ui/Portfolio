@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import React from "react";
-import { TiArrowLeftThick } from "react-icons/ti";
+import { IoHome } from "react-icons/io5";
 import { useEffect } from "react";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
@@ -46,9 +46,9 @@ const LoginPage = () => {
         <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
           <Link
             href="/"
-            className="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white"
+            className="flex items-center mb-6 text-xl font-semibold text-gray-900 dark:text-white gap-3"
           >
-            <TiArrowLeftThick className="text-4xl" /> <span> Go Home</span>
+            <IoHome className="text-2xl" /> <span> Go Home</span>
           </Link>
           <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
             <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
@@ -102,7 +102,7 @@ const LoginPage = () => {
 
                 <button
                   type="submit"
-                  className="w-full text-black border-2 border-slate-700 bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-md px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800 flex items-center justify-center"
+                  className="w-full text-black border-2 border-slate-700 bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-md px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800 dark:border-slate-100 dark:text-white dark:hover:bg-slate-100 dark:hover:text-black flex items-center justify-center transition-all"
                 >
                  {loading? <span className="flex items-center gap-2 "><AiOutlineLoading3Quarters className="animate-spin text-md" />Signing In</span>: 'Sign in'}
                 </button>
