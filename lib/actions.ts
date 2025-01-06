@@ -29,6 +29,8 @@ export async function createBlog({
     return { message: "500 Internal Server Error", status: 500 };
   }
 }
+export async function updateBlog() {
+}
 
 export async function createProject({
   project_title,
@@ -65,4 +67,6 @@ export async function createProject({
     // console.error("Database Error:", err);
     return { message: "500 Internal Server Error", status: 500 };
   }
+}
+export async function updateProjects() {
 }

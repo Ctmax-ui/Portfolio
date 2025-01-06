@@ -5,34 +5,23 @@ import BlogSkeletonCard from "./BlogCardSkeleton";
 import { useRouter, useSearchParams } from "next/navigation";
 import PagiginationNav from "./PagiginationNav";
 import BlogsQueryComponent from "./BlogsQueryComponent";
+import { getBlogs } from "@/lib/data";
+
+export interface QueryResultRow {
+  id: string;
+  blog_title: string;
+  blog_image: string;
+  blog_body: { description: string };
+  created_at: string;
+  updated_at: string;
+}
 
 export interface blogsType {
-  data: {
-    id: number;
-    blog_title: string;
-    blog_image: string;
-    blog_body: { description: string };
-    created_at: string;
-    updated_at: string;
-  }[];
+  data: QueryResultRow[];
   currentPage: number;
   totalPages: number;
   message: string;
-}
-
-async function getBlogs(
-  pageNo: number = 1,
-  inputQuery?: string
-): Promise<blogsType> {
-  const response = await fetch(
-    `/api/blogs?page=${pageNo}&query=${inputQuery}`,
-    {
-      method: "GET",
-      next: { revalidate: 60 },
-    }
-  );
-  const data = await response.json();
-  return data;
+  status: number;
 }
 
 export default function Blogs() {
@@ -41,11 +30,11 @@ export default function Blogs() {
   const paramQuery = params.get("query");
   const paramPage = params.get("page");
 
-  const [blogs, setBlogs] = useState<blogsType>();
+  const [blogs, setBlogs] = useState<blogsType | undefined>();
   const [pageNo, setPageNo] = useState(Number(paramPage) || 1);
   const [isLoading, setIsLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(1);
+  const [totalPages, setTotalPages] = useState<number>(1);
   const [inputQuery, setInputQuery] = useState<string>("");
   const [fetchQuery, setFetchQuery] = useState<string>(paramQuery || "");
   const router = useRouter();
@@ -67,15 +56,16 @@ export default function Blogs() {
   useEffect(() => {
     async function fetchData() {
       setIsLoading(true);
-      //   await new Promise(r=>setTimeout(r,40000))
       const fetchedBlogs = await getBlogs(pageNo, fetchQuery);
-      // console.log(fetchedBlogs);
-      setBlogs(fetchedBlogs);
-      setCurrentPage(fetchedBlogs.currentPage);
-      setTotalPages(fetchedBlogs.totalPages);
-      setIsLoading(false);
+      console.log(fetchedBlogs);
+      if (fetchedBlogs) {
+        // @ts-expect-error: Unreachable code error
+        setBlogs(fetchedBlogs);
+        setCurrentPage(fetchedBlogs.currentPage || 1);
+        setTotalPages(fetchedBlogs.totalPages || 1);
+        setIsLoading(false);
+      }
     }
-
     fetchData();
   }, [pageNo, fetchQuery]);
 
@@ -116,7 +106,8 @@ export default function Blogs() {
             <BlogSkeletonCard />
           </>
         ) : (
-          blogs &&
+          blogs?.data &&
+          blogs.data.length > 0 &&
           blogs?.data?.map((blog) => <BlogCard key={blog.id} blog={blog} />)
         )}
       </div>

@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 interface BlogPost {
-  id: number;
+  id: string;
   blog_title: string;
   blog_image: string;
   blog_body: { description: string };
