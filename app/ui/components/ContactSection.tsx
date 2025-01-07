@@ -85,7 +85,7 @@ export default function ContactSection() {
               <IoMail className="w-4 h-4 text-emerald-500" />
               <span className="text-sm font-medium text-white dark:text-black">CONTACT</span>
             </div>
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 lg:mb-8">
+            <h2 className="text-4xl md:text-5xl font-bold dark:text-white mb-4 lg:mb-8">
               Contact <span className="text-emerald-500">Me.</span>
             </h2>
             <p className="text-slate-900 dark:text-slate-200 text-lg mb-4 lg:mb-8 max-w-2xl">
@@ -107,7 +107,7 @@ export default function ContactSection() {
                       {info.icon}
                     </div>
                     <div>
-                      <h3 className="text-white font-semibold mb-1">
+                      <h3 className="dark:text-white font-semibold mb-1">
                         {info.title}
                       </h3>
                       <p className="text-slate-900 dark:text-slate-200">{info.details}</p>
@@ -139,10 +139,10 @@ export default function ContactSection() {
                 />
                 <textarea
                   name="message"
-                  placeholder="Message"
+                  placeholder="Type your message..."
                   required
                   disabled={sending}
-                  className="rounded-md bg-slate-800 text-white block w-full p-2.5"
+                  className="rounded-md bg-slate-800 text-white block w-full p-2.5 min-h-[44px] max-h-[120]"
                 />
                 <div>
                   <button

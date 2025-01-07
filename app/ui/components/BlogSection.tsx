@@ -6,6 +6,8 @@ import { formatDate } from "@/lib/utils";
 import { FaArrowRightLong } from "react-icons/fa6";
 import { useEffect, useState } from "react";
 import BlogSectionSkeleton from "../skeleton/BlogSectionSkeleton";
+import { getBlogs } from "@/lib/data";
+import { QueryResultRow } from "@vercel/postgres";
 
 export interface BlogPost {
   id: number;
@@ -17,13 +19,10 @@ export interface BlogPost {
 }
 
 const BlogSection = () => {
-  const [blogs, setBlogs] = useState<BlogPost[] | null>(null);
+  const [blogs, setBlogs] = useState<QueryResultRow>();
   useEffect(() => {
     async function fetchData() {
-      const data = await fetch("/api/blogs", {
-        method: "GET",
-      });
-      const response = await data.json();
+      const response = await getBlogs(1,'')
       // console.log(response);
       setBlogs(response.data);
     }

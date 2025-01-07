@@ -59,7 +59,6 @@ export default function Blogs() {
     async function fetchData() {
       setIsLoading(true);
       const fetchedBlogs = await getBlogs(pageNo, fetchQuery);
-      console.log(fetchedBlogs);
       if (fetchedBlogs) {
         // @ts-expect-error: Unreachable code error
         setBlogs(fetchedBlogs);
@@ -104,8 +103,8 @@ export default function Blogs() {
       </div>
       <div
         className={`${
-          blogs && blogs?.data?.length > 0 ? "grid" : ""
-        } h-full grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-5 `}
+          blogs && blogs?.data?.length > 0 ? "grid" : "grid  relative"
+        } grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-5 mb-5`}
       >
         {isLoading ? (
           <>
@@ -116,7 +115,7 @@ export default function Blogs() {
         ) : blogs && blogs?.data?.length > 0 ? (
           blogs.data.map((blog) => <BlogCard key={blog.id} blog={blog} />)
         ) : (
-          <div className="cursor-default h-[60vh] text-3xl gap-2 py-10 flex items-center justify-center">
+          <div className="absolute left-1/2 -translate-x-1/2 cursor-default h-[60vh] text-3xl gap-2 py-10 flex items-center justify-center">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               version="1.0"

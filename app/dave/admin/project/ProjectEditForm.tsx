@@ -1,54 +1,62 @@
 "use client";
-import { createProject } from "@/lib/actions";
-import { sendToast } from "@/lib/utils";
+import { updateProject } from "@/lib/actions";
+
+import { QueryResultRow } from "@vercel/postgres";
 import React, { useState } from "react";
-import { ToastContainer } from "react-toastify";
 import TagAddedComponent from "./TagAddedComponent";
 
-const ProjectForm = () => {
-  const [project_title, setTitle] = useState("");
-  const [project_image, setImageUrl] = useState("");
-  const [description, setDescription] = useState("");
-  const [selectedTags, setSelectedTags] = useState<string[]>([]);
-  const [project_demo, setProjectDemo] = useState("");
-  const [project_code, setProjectCode] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [tags, setTags] = useState<string[]>([]);
+const ProjectEditForm = ({
+    project,
+    setUpdateState,
+    setToastType,
+    setToastMessage
+  }: {
+    project: QueryResultRow;
+    setUpdateState: React.Dispatch<React.SetStateAction<string>>;
+    setToastType:React.Dispatch<React.SetStateAction<"success" | "error" | "info" | "warning">>
+    setToastMessage: React.Dispatch<React.SetStateAction<string>>
+  }) => {
+    const [projectId] = useState(project.id);
+    const [title, setTitle] = useState(project.project_title);
+    const [project_image, setImageUrl] = useState(project.project_image);
+    const [description, setDescription] = useState(project.project_body.description);
+    const [project_code, setProjectCode] = useState(project.project_code);
+    const [project_demo, setProjectDemo] = useState(project.project_demo);
+    const [tags, setTags] = useState<string[]>(project.project_body.tags);
+    const [loading, setLoading] = useState(false);
+  
+    const handleTagsChange = (newTags: string[]) => {
+      setTags(newTags);
+    };
 
-  const handleTagsChange = (newTags: string[]) => {
-    setSelectedTags(newTags);
-  };
-
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setLoading(true);
-    try {
-      const result = await createProject({
-        project_title: project_title,
-        project_image,
-        description,
-        tags: selectedTags,
-        project_demo,
-        project_code,
-      });
-      if (result.status == 201) {
-        // setTitle("");
-        // setBody("");
-        sendToast("Project added successfully.", "success");
-      } else {
-        sendToast("Failed to add, Try again later.", "error");
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+      e.preventDefault();
+      setLoading(true);
+      try {
+        const result = await updateProject(projectId, title, description, project_image,tags,project_code,project_demo);
+        if (result.status == 202) {
+          // setTitle("");
+          // setBody("");
+          setToastType("success")
+          setToastMessage("Project Updated Successfully!")
+          setUpdateState((prev)=>prev+'1');
+        } else {
+          setToastType("error")
+          setToastMessage("Failed to Update, Try Again")
+          setUpdateState((prev)=>prev+'1');
+        }
+      } catch {
+          setToastType("error")
+          setToastMessage("Failed to Update, Try Again")
+          setUpdateState((prev)=>prev+'1');
+      } finally {
+        setLoading(false);
       }
-    } catch {
-      sendToast("Failed to add, Try again later.", "error");
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  return (
-    <>
-      <ToastContainer newestOnTop={true} />
-      <form
+    };
+  
+    return (
+      <>
+        <form
         onSubmit={handleSubmit}
         className="flex flex-col justify-between gap-4 "
       >
@@ -59,7 +67,7 @@ const ProjectForm = () => {
               type="text"
               id="title"
               placeholder="Project Title......."
-              value={project_title}
+              value={title}
               onChange={(e) => setTitle(e.target.value)}
               required
               className="px-5 py-4 w-full border border-slate-800 dark:border-slate-200 rounded-sm dark:bg-black"
@@ -106,7 +114,7 @@ const ProjectForm = () => {
         </div>
 
         <div className="w-full">
-          <TagAddedComponent onTagsChange={handleTagsChange} tags={tags} setTags={setTags} />
+          <TagAddedComponent onTagsChange={handleTagsChange} setTags={setTags} tags={tags} />
         </div>
 
         <div className="">
@@ -131,8 +139,8 @@ const ProjectForm = () => {
           {loading ? "Submitting..." : "Submit Blog"}
         </button>
       </form>
-    </>
-  );
-};
+      </>
+    );
+  };
 
-export default ProjectForm;
+export default ProjectEditForm

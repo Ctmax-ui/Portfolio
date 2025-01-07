@@ -51,7 +51,7 @@ async function seedProjects() {
 };
 
 export async function GET() {
-  // return Response.json({message:'nothing to seed, go back!!'}, {status: 403})
+  return Response.json({message:'nothing to seed, go back!!'}, {status: 403})
   try {
     await client.sql`BEGIN`;
     await seedBlogs();

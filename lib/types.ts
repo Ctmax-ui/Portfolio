@@ -22,3 +22,13 @@ export interface QueryResultRow {
     message: string;
     status: number;
   }
+
+
+  export interface ProjectTypes{
+    id: string;
+    project_title: string;
+    project_image: string;
+    project_body: {tags:[string], description: string };
+    created_at: string;
+    updated_at: string;
+}

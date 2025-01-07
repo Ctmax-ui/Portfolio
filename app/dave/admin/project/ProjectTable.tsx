@@ -1,33 +1,33 @@
 "use client";
-import { getBlogs } from "@/lib/data";
-import { BlogTypes } from "@/lib/types";
+import { getProjects } from "@/lib/data";
+import { ProjectTypes } from "@/lib/types";
 import { formatDate } from "@/lib/utils";
 import { QueryResultRow } from "@vercel/postgres";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import { FaTrash } from "react-icons/fa";
-import BlogTableSkeleton from "./BlogTableSkeleton";
-import EditBlogFormModal from "./EditBlogFormModal";
-import {ToastContainer } from "react-toastify";
+import BlogTableSkeleton from "../blogs/BlogTableSkeleton";
+import EditProjectFormModal from "./EditProjectFormModal";
+import { ToastContainer } from "react-toastify";
 import { sendToast } from "@/lib/utils";
-import { deleteBlog } from "@/lib/actions";
+import { deleteProject } from "@/lib/actions";
 import { FiRefreshCcw } from "react-icons/fi";
 
-const BlogTable = () => {
-  const [updateState, setUpdateState] = useState<string>('');
+const ProjectTable = () => {
+  const [updateState, setUpdateState] = useState<string>("");
   const [toastMessage, setToastMessage] = useState<string>("");
   const [toastType, setToastType] = useState<
     "success" | "error" | "info" | "warning"
   >("success");
-  const [blogs, setBlogs] = useState<QueryResultRow>();
+  const [projects, setProjects] = useState<QueryResultRow>();
   const [isLoading, setIsloading] = useState(true);
   const [pageNo, setPageNo] = useState(1);
   const [query] = useState("");
 
   async function fetchData() {
     setIsloading(true);
-    const data = await getBlogs(pageNo, query);
-    setBlogs(data);
+    const data = await getProjects(pageNo, query);
+    setProjects(data);
     setIsloading(false);
   }
 
@@ -50,10 +50,10 @@ const BlogTable = () => {
     setPageNo(pageNo > 1 ? pageNo - 1 : 1);
   };
 
-  const handlerDeleteBlog = async (id: string) => {
-    await deleteBlog(id);
-    setToastMessage('Blog Deleted Successfully.')
-    setToastType('success')
+  const handlerDeleteProject = async (id: string) => {
+    await deleteProject(id);
+    setToastMessage("Project Deleted Successfully.");
+    setToastType("success");
     setUpdateState((prev) => prev + "1");
   };
 
@@ -72,17 +72,18 @@ const BlogTable = () => {
               {"<"}
             </button>
             <p className="h-fit">
-              Page: {pageNo}/{blogs?.totalPages || 1}
+              Page: {pageNo}/{projects?.totalPages || 1}
             </p>
             <button
               onClick={handlePageIncrement}
-              disabled={pageNo < blogs?.totalPages ? false : true}
+              disabled={pageNo < projects?.totalPages ? false : true}
               className="border px-2 py-1 rounded-md border-slate-800 hover:bg-slate-800 hover:text-white transition-all"
             >
               {">"}
             </button>
           </div>
           <button onClick={()=>setUpdateState((prev)=>prev+'1')} className="border px-2 py-2 rounded-full"><FiRefreshCcw /></button>
+
           <form className="border px-3 py-1 rounded-md">
             <input
               type="text"
@@ -122,18 +123,18 @@ const BlogTable = () => {
                 <BlogTableSkeleton />
               </>
             ) : (
-              blogs &&
-              blogs.data?.map((blog: BlogTypes) => (
+              projects &&
+              projects.data?.map((project: ProjectTypes) => (
                 <tr
-                  key={blog.id}
+                  key={project.id}
                   className="hover:bg-gray-50 dark:hover:bg-slate-700 border-b dark:border-gray-300"
                 >
                   <td className="py-1 px-1 w-auto h-auto hidden lg:table-cell">
                     <Image
                       src={`/api/imageproxy?url=${encodeURIComponent(
-                        blog.blog_image
+                        project.project_image
                       )}`}
-                      alt={blog.blog_title}
+                      alt={project.project_title}
                       width={70}
                       height={70}
                       className="rounded-md"
@@ -141,27 +142,27 @@ const BlogTable = () => {
                   </td>
                   <td>
                     <div className="py-2 px-4 font-medium text-nowrap overflow-hidden text-ellipsis w-[100px] sm:w-auto">
-                      {blog.blog_title}
+                      {project.project_title}
                     </div>
                   </td>
                   <td>
                     <div className="px-4 line-clamp-1 w-[100px] sm:w-auto">
-                      {blog.blog_body.description}
+                      {project.project_body.description}
                     </div>
                   </td>
                   <td className="hidden lg:table-cell text-nowrap">
-                    {formatDate(blog.updated_at)}
+                    {formatDate(project.updated_at)}
                   </td>
                   <td className="">
                     <div className=" flex justify-evenly">
-                      <EditBlogFormModal
-                        blog={blog}
+                      <EditProjectFormModal
+                        project={project}
                         setUpdateState={setUpdateState}
                         setToastType={setToastType}
                         setToastMessage={setToastMessage}
                       />
                       <button
-                        onClick={() => handlerDeleteBlog(blog.id)}
+                        onClick={() => handlerDeleteProject(project.id)}
                         className="border px-2 py-2 hover:bg-red-600 hover:text-white transition-all rounded-md hover:border-red-500"
                       >
                         <FaTrash />
@@ -178,4 +179,4 @@ const BlogTable = () => {
   );
 };
 
-export default BlogTable;
+export default ProjectTable;

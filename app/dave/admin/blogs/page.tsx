@@ -3,7 +3,7 @@ import CreateBlogFromModal from "./CreateBlogFromModal";
 const Page = () => {
   return (
     <div className="m=">
-      <div className="flex justify-end mb-4">
+      <div className="flex justify-end mb-2">
         <CreateBlogFromModal />
       </div>
       <div className="">

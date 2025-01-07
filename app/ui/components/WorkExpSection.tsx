@@ -55,14 +55,14 @@ export default function WorkExperienceSection() {
         </h2>
 
         <div className="relative space-y-8">
-          <div className="absolute left-[7px] top-[7px] bottom-[7px] w-[2px] bg-zinc-800" />
+          <div className="absolute left-[7px] top-[7px] bottom-[7px] w-[2px] bg-zinc-800 dark:bg-slate-300" />
 
           {experiences.map((experience, index) => (
             <div
               key={index}
               className="relative grid grid-cols-[auto,1fr] gap-6 md:gap-8"
             >
-              <div className="relative">
+              <div className="relative dark:border-slate-300">
                 <div className="w-4 h-4 rounded-full bg-zinc-950 border-2 border-emerald-500" />
               </div>
 

@@ -29,9 +29,36 @@ export async function createBlog({
     return { message: "500 Internal Server Error", status: 500 };
   }
 }
-export async function updateBlog() {
+export async function updateBlog(
+  id: string,
+  title: string,
+  description: string,
+  imageUrl: string
+) {
+  try {
+    await sql`UPDATE blogs
+  SET 
+    blog_title = ${title},
+    blog_body = ${JSON.stringify({ description: description })}::jsonb,
+    blog_image = ${imageUrl},
+    updated_at = NOW()
+    WHERE id = ${id};
+    `;
+
+    return { message: `Blog Updated successfully`, status: 202 };
+  } catch (err) {
+    console.error("Database Error:", err);
+    return { message: "500 Internal Server Error", status: 500 };
+  }
 }
-export async function deleteBlog() {
+export async function deleteBlog(id: string) {
+  try {
+    await sql`DELETE FROM blogs WHERE id = ${id}`;
+    return { message: `Blog Deleted successfully`, status: 203 };
+  } catch (err) {
+    console.error("Database Error:", err);
+    return { message: "500 Internal Server Error", status: 500 };
+  }
 }
 
 export async function createProject({
@@ -70,5 +97,39 @@ export async function createProject({
     return { message: "500 Internal Server Error", status: 500 };
   }
 }
-export async function updateProjects() {
+export async function updateProject(
+  id: string,
+  title: string,
+  description: string,
+  imageUrl: string,
+  tags: string[],
+  project_code: string,
+  project_demo: string
+) {
+  try {
+    await sql`UPDATE projects
+  SET 
+    project_title = ${title},
+    project_body = ${JSON.stringify({ description: description, tags: tags })}::jsonb,
+    project_image = ${imageUrl},
+    project_code = ${project_code},
+    project_demo = ${project_demo},
+    updated_at = NOW()
+    WHERE id = ${id};
+    `;
+
+    return { message: `Blog Updated successfully`, status: 202 };
+  } catch (err) {
+    console.error("Database Error:", err);
+    return { message: "500 Internal Server Error", status: 500 };
+  }
+}
+export async function deleteProject(id: string) {
+  try {
+    await sql`DELETE FROM projects WHERE id = ${id}`;
+    return { message: `Blog Deleted successfully`, status: 203 };
+  } catch (err) {
+    console.error("Database Error:", err);
+    return { message: "500 Internal Server Error", status: 500 };
+  }
 }

@@ -1,11 +1,16 @@
-import ProjectForm from "./ProjectForm";
+import CreateProjectFromModal from "./CreateProjectFromModal";
+import ProjectTable from "./ProjectTable";
 
 const page = () => {
 
   return (
-    <div className="mt-10">
-      <h1 className="mb-5 text-xl ">Create a New Project</h1>
-      <ProjectForm />
+    <div className="m=">
+      <div className="flex justify-end mb-2">
+        <CreateProjectFromModal />
+      </div>
+      <div className="">
+        <ProjectTable />
+      </div>
     </div>
   );
 };

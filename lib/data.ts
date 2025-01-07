@@ -91,6 +91,70 @@ export async function fetchBlogById(id: string) {
   }
 }
 
+export async function getProjects(pageNo: number, fetchQuery: string){
+  try {
+    const query = fetchQuery || null;
+    const pageNoReq = pageNo || 1;
+
+    if (isNaN(pageNoReq) || pageNoReq < 1) {
+      return { message: "Invalid page number", status: 400, data: [],totalPages: 0,
+        currentPage: 0, };
+    }
+
+    if (query && query.length > 100) {
+      return { message: "Query too long", status: 400, data: [],totalPages: 0,
+        currentPage: 0, };
+    }
+
+    const pageLimit = 10;
+    const pageOffset = (pageNoReq - 1) * pageLimit;
+
+    let data;
+    let totalBlogs;
+
+    if (query) {
+      data = await sql`
+      SELECT * 
+      FROM projects 
+      WHERE project_title ILIKE ${"%" + query + "%"} 
+      ORDER BY updated_at DESC 
+      LIMIT ${pageLimit} 
+      OFFSET ${pageOffset}
+    `;
+      totalBlogs = await sql`
+      SELECT COUNT(*) FROM projects 
+      WHERE project_title ILIKE ${"%" + query + "%"}
+    `;
+    } else {
+      data = await sql`
+      SELECT * 
+      FROM projects 
+      ORDER BY updated_at DESC 
+      LIMIT ${pageLimit} 
+      OFFSET ${pageOffset}
+    `;
+      totalBlogs = await sql`SELECT COUNT(*) FROM projects`;
+    }
+    // console.log(data);
+    return {
+      message: "success",
+      data: data.rows,
+      totalPages: Math.ceil(totalBlogs?.rows[0]?.count / pageLimit),
+      currentPage: pageNoReq,
+      status: 200,
+    };
+  } catch (err) {
+    console.error(err);
+    return {
+      message: "Internal server error",
+      status: 500,
+      data: [],
+      totalPages: 0,
+        currentPage: 0,
+    };
+  }
+}
+
 export async function fetchProjects() {
   try {
     const { rows } = await sql`SELECT * FROM projects ORDER BY updated_at DESC`;

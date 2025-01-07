@@ -4,11 +4,12 @@ import React, { useState, KeyboardEvent } from "react";
 import { X } from "lucide-react";
 
 interface TagSelectorProps {
+  tags:string[]
+  setTags: React.Dispatch<React.SetStateAction<string[]>>
   onTagsChange: (tags: string[]) => void;
 }
 
-const TagAddedComponent: React.FC<TagSelectorProps> = ({ onTagsChange }) => {
-  const [tags, setTags] = useState<string[]>([]);
+const TagAddedComponent: React.FC<TagSelectorProps> = ({ onTagsChange,tags,setTags }) => {
   const [inputValue, setInputValue] = useState("");
 
   const addTag = (tag: string) => {
@@ -32,7 +33,6 @@ const TagAddedComponent: React.FC<TagSelectorProps> = ({ onTagsChange }) => {
   };
 
   const handleInputKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
-    console.log(e);
     if (e.key === "Enter" || e.key === ",") {
       e.preventDefault();
       addTag(inputValue);

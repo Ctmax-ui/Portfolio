@@ -38,7 +38,7 @@ and discovering their potential to solve real-world problems.`,
   }[];
 }) {
   return (
-    <section className=" px-6 py-12 cursor-default" id="about">
+    <section className=" px-6 py-5 cursor-default" id="about">
       <div className="">
         <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full dark:bg-slate-100 bg-zinc-900/50 backdrop-blur-sm mb-8">
           <div className="text-emerald-500 text-2xl">
