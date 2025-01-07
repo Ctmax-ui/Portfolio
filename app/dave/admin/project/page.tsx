@@ -3,7 +3,7 @@ import ProjectForm from "./ProjectForm";
 const page = () => {
 
   return (
-    <div className="">
+    <div className="mt-10">
       <h1 className="mb-5 text-xl ">Create a New Project</h1>
       <ProjectForm />
     </div>

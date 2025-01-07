@@ -45,7 +45,7 @@ export async function getBlogs(pageNo: number, fetchQuery: string) {
     `;
       totalBlogs = await sql`SELECT COUNT(*) FROM blogs`;
     }
-
+    // console.log(data);
     return {
       message: "success",
       data: data.rows,
@@ -64,7 +64,6 @@ export async function getBlogs(pageNo: number, fetchQuery: string) {
     };
   }
 }
-
 
 
 export async function fetchBlogById(id: string) {

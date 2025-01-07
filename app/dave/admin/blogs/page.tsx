@@ -1,18 +1,15 @@
-import BlogForm from "./BlogForm";
-
+import BlogTable from "./BlogTable";
+import CreateBlogFromModal from "./CreateBlogFromModal";
 const Page = () => {
-
   return (
-    <div className="">
-
-      <div className="">
-        
+    <div className="m=">
+      <div className="flex justify-end mb-4">
+        <CreateBlogFromModal />
       </div>
-
-      <h1 className="mb-5 text-xl ">Create a New Blog</h1>
-      <BlogForm />
+      <div className="">
+        <BlogTable />
+      </div>
     </div>
   );
 };
-
 export default Page;

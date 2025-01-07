@@ -27,7 +27,7 @@ export default async function Layout({
           <SideNavComponent routes={routes} />
           <main className="p-3 w-full">
             <SidebarTrigger className="fixed bg-slate-500 text-white hover:bg-slate-600 hover:text-slate-300" />
-            <div className="mt-10">{children}</div>
+            <div className="">{children}</div>
           </main>
         </SidebarProvider>
       </div>

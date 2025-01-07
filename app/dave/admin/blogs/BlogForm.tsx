@@ -37,19 +37,19 @@ const BlogForm = () => {
         className="flex flex-col justify-between gap-4 "
       >
         <div className="">
-          <label htmlFor="title">Blog Title:</label>
           <input
             type="text"
             id="title"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
             required
+            placeholder="Blog Title"
             className="px-5 py-4 w-full border border-slate-800 dark:border-slate-200 rounded-sm dark:bg-black"
           />
         </div>
         <div className="">
-          <label htmlFor="imageUrl">Blog Image Url:</label>
           <input
+          placeholder="Blog Image Url"
             type="text"
             id="imageUrl"
             value={imageUrl}
@@ -59,8 +59,8 @@ const BlogForm = () => {
           />
         </div>
         <div className="">
-          <label htmlFor="textBody">Blog Content:</label>
           <textarea
+          placeholder="Blog Description......"
             id="textBody"
             value={description}
             onChange={(e) => setDescription(e.target.value)}

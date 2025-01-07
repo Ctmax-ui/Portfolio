@@ -10,6 +10,7 @@ body {
   scrollbar-width: thin;
   /* scrollbar-color: #3663d5 #c2bebe; */
   scrollbar-gutter: stable;
+  margin-right: 0 !important;
 }
 
 .glass-gradient {

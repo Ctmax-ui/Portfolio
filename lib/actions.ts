@@ -31,6 +31,8 @@ export async function createBlog({
 }
 export async function updateBlog() {
 }
+export async function deleteBlog() {
+}
 
 export async function createProject({
   project_title,
