@@ -4,7 +4,7 @@ import { MdOutlineOpenInNew } from "react-icons/md";
 
 export default function AboutSection({
   name = "Debjeet Biswas",
-  bio = `a passionate coder who finds joy in creating
+  bio = `A passionate coder who finds joy in creating
 technology that truly serves end users. Learning to code has
 been my greatest achievement, as it empowers me to build
 almost anything I imagine. I love diving into new technologies
