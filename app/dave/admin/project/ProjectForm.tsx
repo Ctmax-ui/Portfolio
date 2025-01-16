@@ -32,8 +32,13 @@ const ProjectForm = () => {
         project_code,
       });
       if (result.status == 201) {
-        // setTitle("");
-        // setBody("");
+        setTitle("");
+        setImageUrl("");
+        setDescription("");
+        setProjectCode("");
+        setProjectDemo('')
+        setSelectedTags([])
+        setTags([])
         sendToast("Project added successfully.", "success");
       } else {
         sendToast("Failed to add, Try again later.", "error");
@@ -128,7 +133,7 @@ const ProjectForm = () => {
           disabled={loading}
           className="border rounded-sm py-3 border-blue-500 text-black transition-all hover:bg-blue-500 hover:text-white dark:text-white"
         >
-          {loading ? "Submitting..." : "Submit Blog"}
+          {loading ? "Creating..." : "Create Project"}
         </button>
       </form>
     </>

@@ -35,8 +35,6 @@ const ProjectEditForm = ({
       try {
         const result = await updateProject(projectId, title, description, project_image,tags,project_code,project_demo);
         if (result.status == 202) {
-          // setTitle("");
-          // setBody("");
           setToastType("success")
           setToastMessage("Project Updated Successfully!")
           setUpdateState((prev)=>prev+'1');
@@ -136,7 +134,7 @@ const ProjectEditForm = ({
           disabled={loading}
           className="border rounded-sm py-3 border-blue-500 text-black transition-all hover:bg-blue-500 hover:text-white dark:text-white"
         >
-          {loading ? "Submitting..." : "Submit Blog"}
+          {loading ?  "Updating..." : "Update Project"}
         </button>
       </form>
       </>

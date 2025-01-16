@@ -5,9 +5,7 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import React from "react";
 import { IoHome } from "react-icons/io5";
-import { useEffect } from "react";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
-
 
 const LoginPage = () => {
   const [username, setUsername] = useState("");
@@ -33,12 +31,6 @@ const LoginPage = () => {
       router.push("/dave/admin");
     }
   };
-
-  useEffect(() => {
-    // setInterval(()=>{
-    //   setError('')
-    // },3000)
-  }, [error]);
 
   return (
     <>

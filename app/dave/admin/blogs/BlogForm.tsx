@@ -16,8 +16,9 @@ const BlogForm = () => {
     try {
       const result = await createBlog({ title, description, imageUrl });
       if (result.status == 201) {
-        // setTitle("");
-        // setBody("");
+        setTitle("");
+        setImageUrl('')
+        setDescription("");
         sendToast("Blog created successfully!", "success");
       } else {
         sendToast("Failed to Create, Try Again", "error");

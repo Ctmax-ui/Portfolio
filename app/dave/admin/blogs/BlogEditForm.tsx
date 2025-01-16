@@ -27,8 +27,8 @@ const BlogEditForm = ({
     try {
       const result = await updateBlog(blogId, title, description, imageUrl);
       if (result.status == 202) {
-        // setTitle("");
-        // setBody("");
+        setTitle("");
+        setDescription("");
         setToastType("success")
         setToastMessage("Blog updated successfully!")
         setUpdateState((prev)=>prev+'1');
@@ -102,7 +102,7 @@ const BlogEditForm = ({
           disabled={loading}
           className="border rounded-sm py-2 border-blue-500 text-black transition-all hover:bg-blue-500 hover:text-white dark:text-white"
         >
-          {loading ? "Submitting..." : "Submit Blog"}
+          {loading ? "Updating..." : "Update Blog"}
         </button>
       </form>
     </>
